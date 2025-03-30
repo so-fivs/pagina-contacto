@@ -1,103 +1,116 @@
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 import Image from "next/image";
+import Spotlight from "@/components/spotlight";
 
-export default function Home() {
+interface InfoCardProps {
+  title: string;
+  content: string;
+}
+
+const InfoCard: React.FC<InfoCardProps> = ({ title, content }) => (
+  <div className="relative h-full overflow-hidden rounded-2xl bg-white p-6 border border-gray-300 shadow-md">
+    <div className="mb-3">
+      <span className="btn-sm relative rounded-full bg-gray-100 px-3 py-1 text-base font-semibold hover:bg-gray-200">
+        <span className="bg-gradient-to-r from-indigo-500 to-blue-200 bg-clip-text text-transparent">
+          {title}
+        </span>
+      </span>
+    </div>
+    <p className="text-gray-700">{content}</p>
+  </div>
+);
+
+export default function Page() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div>
+      <Navbar />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+      <div className="relative w-full h-[500px] md:h-[630px] overflow-hidden">
+        <Image
+        src="/images/main.webp"
+        layout="fill"
+        objectFit="cover"
+        alt="Imagen a mostrar"
+        className="brightness-30"
+      />
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+        <h1 className="text-white text-4xl md:text-5xl font-bold">
+          "Expertos en construir, remodelar y transformar tus espacios con calidad y confianza"
+        </h1>
+        <p className="text-white text-lg md:text-xl mt-4 font-medium">
+          Empresa de construcción
+        </p>
+        <a 
+          href="/contacto"
+          className="mt-6 bg-gray-600 text-white text-lg font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-gray-700 transition duration-300"
+        >
+          Contáctanos Hoy
+        </a>
+      </div>
+    </div>
+
+    <section className="mt-16 pt-0 pb-12 md:pb-0 font-sans">
+      <div className="mt-16 pt-0 pb-12 md:pb-20">
+        <div className="pb-12 md:pb-20">
+          {/* Section quienes somos */}
+          <div className="mx-auto max-w-3xl pb-12 text-center md:pb-10">
+            <div className="inline-flex items-center gap-3 pb-3 before:h-px before:w-8 before:bg-gradient-to-r before:from-transparent before:to-blue-400/50 after:h-px after:w-8 after:bg-gradient-to-l after:from-transparent after:to-blue-400/50">
+              <span className="inline-flex text-gray-900 text-lg font-medium">
+                Empresa colombiana
+              </span>
+            </div>
+
+            <h2 className="pb-4 text-3xl font-bold text-blue-700 md:text-4xl">
+              Quiénes somos
+            </h2>
+
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Somos una empresa constructora de Bogotá con más de 10 años de trayectoria. 
+              Dedicada a la ejecución de obras integrales en construcción, remodelación y
+              mantenimiento con mano de obra propia. 
+              Destacada por brindar asesoramiento y soluciones constructivas a sus clientes, 
+              buscando siempre ajustarse a las necesidades del mismo y garantizando 
+              siempre calidad, cumplimiento y excelencia. Nuestra experiencia y compromiso nos han 
+              convertido en un aliado confiable para transformar y mejorar todo tipo de espacios.
+            </p>
+          </div>
+
+          {/* Misión, visión y valores */}
+          <Spotlight className="group mx-auto grid max-w-6xl items-start gap-6 lg:grid-cols-3">
+            <InfoCard
+              title="Misión"
+              content="Construir estructuras de alta calidad que satisfagan las necesidades de 
+              nuestros clientes con responsabilidad, honestidad y cumplimiento. Garantizar
+              el uso eficiente de los recursos, optimizando el presupuesto para superar sus
+              expectativas y contribuir a la mejora de su calidad de vida. Integrar estilo,
+              calidad y creatividad en cada proyecto, fomentando siempre la sostenibilidad
+              del medio ambiente."
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <InfoCard
+              title="Visión"
+              content="Posicionarnos como una empresa integral y referente en el sector de la 
+              construcción, destacándonos por la excelencia en la prestación de nuestros 
+              servicios. Ampliar nuestra presencia en el mercado, estableciendo alianzas
+              con grandes inmobiliarias y proyectos civiles. Consolidarnos como una 
+              compañía en constante crecimiento, generando más oportunidades laborales y 
+              contribuyendo al bienestar de más familias colombianas."
+            />
+            <InfoCard
+              title="Valores"
+              content="Al ser una empresa familiar, fundamentamos nuestro trabajo en principios que nos distinguen. Actuamos con ética y 
+              profesionalismo, manteniendo una relación de confianza con nuestros clientes. Impulsamos 
+              la innovación para desarrollar soluciones funcionales y estéticas. Respetamos cada detalle
+              en nuestras ejecuciones, garantizando precisión y durabilidad. Fomentamos la colaboración y el crecimiento 
+              mutuo, creando un entorno laboral armonioso."
+            />
+          </Spotlight>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+    </section>
+
+
+      <Footer />
     </div>
   );
 }
