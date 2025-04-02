@@ -61,7 +61,8 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // 📂 Ruta para recibir solicitudes de empleo con CV
-app.post('/potencial_cliente', (req, res) => {
+app.post('/potencial_empleado', (req, res) => {
+    console.log('Cuerpo recibido:', req.body);
     // Obtener los datos del cuerpo de la solicitud, coincidiendo con las mayúsculas/minúsculas exactas del JSON
     const { Nombre, Correo, Experiencia, Mensaje, id, telefono } = req.body;
     
