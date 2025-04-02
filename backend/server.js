@@ -32,7 +32,7 @@ db.connect(err => {
 });
 
 // 📩 Ruta para recibir mensajes de contacto
-app.post('/contacto', (req, res) => {
+app.post('/potencial_cliente', (req, res) => {
     const { nombre, email, telefono, mensaje } = req.body;
 
     if (!nombre || !email || !telefono || !mensaje) {
@@ -61,7 +61,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // 📂 Ruta para recibir solicitudes de empleo con CV
-app.post('/trabajo', upload.single('cv'), (req, res) => {
+app.post('/potencial_empleado', upload.single('cv'), (req, res) => {
     const { nombre, email, telefono, mensaje } = req.body;
     const cv = req.file ? req.file.filename : null;
 
