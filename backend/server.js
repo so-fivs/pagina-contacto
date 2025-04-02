@@ -61,20 +61,37 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // 📂 Ruta para recibir solicitudes de empleo con CV
-app.post('/potencial_empleado', upload.single('cv'), (req, res) => {
-    const { nombre, email, telefono, mensaje } = req.body;
-    const cv = req.file ? req.file.filename : null;
-
-    if (!nombre || !email || !telefono || !mensaje || !cv) {
-        return res.status(400).json({ error: 'Todos los campos y el CV son requeridos' });
+app.post('/potencial_cliente', (req, res) => {
+    // Obtener los datos del cuerpo de la solicitud, coincidiendo con las mayúsculas/minúsculas exactas del JSON
+    const { Nombre, Correo, Experiencia, Mensaje, id, telefono } = req.body;
+    
+    // Validar que los datos requeridos estén presentes
+    if (!Nombre || !Correo || !Mensaje || !telefono) {
+        return res.status(400).json({ error: 'Todos los campos son requeridos' });
     }
-
+    
+    // Convertir Experiencia a un número (tinyint)
+    const experienciaNum = parseInt(Experiencia);
+    if (isNaN(experienciaNum) || experienciaNum < 0 || experienciaNum > 255) {
+        return res.status(400).json({ error: 'La experiencia debe ser un número entre 0 y 255' });
+    }
+    
+    // Convertir telefono a número
+    const telefonoNum = parseInt(telefono);
+    if (isNaN(telefonoNum)) {
+        return res.status(400).json({ error: 'El teléfono debe ser un número válido' });
+    }
+    
+    // Insertar en la base de datos con los nombres de campos correctos
     db.query(
-        'INSERT INTO solicitudes_trabajo (nombre, email, telefono, mensaje, cv) VALUES (?, ?, ?, ?, ?)',
-        [nombre, email, telefono, mensaje, cv],
+        'INSERT INTO potencial_cliente (Nombre, Correo, Experiencia, Mensaje, telefono) VALUES (?, ?, ?, ?, ?)',
+        [Nombre, Correo, experienciaNum, Mensaje, telefonoNum],
         (err, result) => {
-            if (err) return res.status(500).send(err);
-            res.json({ message: 'Solicitud enviada con éxito', id: result.insertId });
+            if (err) {
+                console.error('Error al insertar en la base de datos:', err);
+                return res.status(500).send(err);
+            }
+            res.json({ message: 'Mensaje enviado con éxito', id: result.insertId });
         }
     );
 });
