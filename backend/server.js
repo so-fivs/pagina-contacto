@@ -40,7 +40,7 @@ app.post('/potencial_cliente', (req, res) => {
     }
 
     db.query(
-        'INSERT INTO potencial_cliente(nombre, email, telefono, mensaje) VALUES (?, ?, ?, ?)',
+        'INSERT INTO potencial_cliente(Nombre, Correo, Mensaje, telefono) VALUES (?, ?, ?, ?)',
         [Nombre, Correo, Mensaje,telefono, ],
         (err, result) => {
             if (err) return res.status(500).send(err);
