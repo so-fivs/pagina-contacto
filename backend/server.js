@@ -49,53 +49,41 @@ app.post('/potencial_cliente', (req, res) => {
     );
 });
 
-// 📑 Configurar almacenamiento de archivos con Multer
+const multer = require("multer");
+
+// Configuración de almacenamiento para guardar archivos en la carpeta 'uploads'
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'uploads/');
+        cb(null, "uploads/");
     },
     filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname));
+        cb(null, Date.now() + "-" + file.originalname);
     }
 });
+
 const upload = multer({ storage });
 
-// 📂 Ruta para recibir solicitudes de empleo con CV
-app.post('/potencial_empleado', (req, res) => {
-    console.log('Cuerpo recibido:', req.body);
-    // Obtener los datos del cuerpo de la solicitud, coincidiendo con las mayúsculas/minúsculas exactas del JSON
-    const { Nombre, Correo, Experiencia, Mensaje, id, telefono } = req.body;
-    
-    // Validar que los datos requeridos estén presentes
+app.post("/potencial_empleado", upload.single("CV"), (req, res) => {
+    const { Nombre, Correo, Experiencia, Mensaje, telefono } = req.body;
+    const cvPath = req.file ? req.file.path : null;
+
     if (!Nombre || !Correo || !Mensaje || !telefono) {
-        return res.status(400).json({ error: 'Todos los campos son requeridos' });
+        return res.status(400).json({ error: "Todos los campos son requeridos" });
     }
-    
-    // Convertir Experiencia a un número (tinyint)
-    const experienciaNum = parseInt(Experiencia);
-    if (isNaN(experienciaNum) || experienciaNum < 0 || experienciaNum > 255) {
-        return res.status(400).json({ error: 'La experiencia debe ser un número entre 0 y 255' });
-    }
-    
-    // Convertir telefono a número
-    const telefonoNum = parseInt(telefono);
-    if (isNaN(telefonoNum)) {
-        return res.status(400).json({ error: 'El teléfono debe ser un número válido' });
-    }
-    
-    // Insertar en la base de datos con los nombres de campos correctos
+
     db.query(
-        'INSERT INTO potencial_cliente (Nombre, Correo, Experiencia, Mensaje, telefono) VALUES (?, ?, ?, ?, ?)',
-        [Nombre, Correo, experienciaNum, Mensaje, telefonoNum],
+        "INSERT INTO potencial_cliente (Nombre, Correo, Experiencia, Mensaje, telefono, CV) VALUES (?, ?, ?, ?, ?, ?)",
+        [Nombre, Correo, Experiencia, Mensaje, telefono, cvPath],
         (err, result) => {
             if (err) {
-                console.error('Error al insertar en la base de datos:', err);
+                console.error("Error al insertar en la base de datos:", err);
                 return res.status(500).send(err);
             }
-            res.json({ message: 'Mensaje enviado con éxito', id: result.insertId });
+            res.json({ message: "Mensaje enviado con éxito", id: result.insertId });
         }
     );
 });
+
 
 // Iniciar el servidor
 app.listen(PORT, () => {
