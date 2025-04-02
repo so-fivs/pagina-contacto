@@ -49,7 +49,6 @@ app.post('/potencial_cliente', (req, res) => {
     );
 });
 
-const multer = require("multer");
 
 // Configuración de almacenamiento para guardar archivos en la carpeta 'uploads'
 const storage = multer.diskStorage({
