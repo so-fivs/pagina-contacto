@@ -33,15 +33,15 @@ db.connect(err => {
 
 // 📩 Ruta para recibir mensajes de contacto
 app.post('/potencial_cliente', (req, res) => {
-    const { nombre, email, telefono, mensaje } = req.body;
+    const { Nombre, Correo, Mensaje, telefono } = req.body;
 
-    if (!nombre || !email || !telefono || !mensaje) {
+    if (!Nombre || !Correo || !telefono || !Mensaje) {
         return res.status(400).json({ error: 'Todos los campos son requeridos' });
     }
 
     db.query(
         'INSERT INTO contactos (nombre, email, telefono, mensaje) VALUES (?, ?, ?, ?)',
-        [nombre, email, telefono, mensaje],
+        [Nombre, Correo, Mensaje,telefono, ],
         (err, result) => {
             if (err) return res.status(500).send(err);
             res.json({ message: 'Mensaje enviado con éxito', id: result.insertId });
