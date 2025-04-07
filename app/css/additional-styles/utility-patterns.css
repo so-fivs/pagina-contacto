@@ -53,3 +53,5 @@ input[type='search']::-webkit-search-results-decoration {
 .form-checkbox {
     @apply rounded-xs;
 }
+
+  
