@@ -14,7 +14,18 @@ app.use((req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
+// ✅ CONFIGURACIÓN MEJORADA DE CORS
+app.use(cors({
+    origin: ['http://localhost:3000'], // Puedes agregar más dominios aquí como 'https://tu-dominio.com'
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type']
+}));
 
+// Debug opcional de los headers
+app.use((req, res, next) => {
+    console.log("🔍 Headers:", req.headers['content-type']);
+    next();
+});
 // Crear carpeta uploads si no existe
 if (!fs.existsSync('uploads')) {
     fs.mkdirSync('uploads');
