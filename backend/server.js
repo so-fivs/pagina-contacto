@@ -68,7 +68,11 @@ app.post('/potencial_cliente', (req, res) => {
         'INSERT INTO potencial_cliente(Nombre, Correo, Mensaje, telefono) VALUES (?, ?, ?, ?)',
         [Nombre, Correo, Mensaje, telefono],
         (err, result) => {
-            if (err) return res.status(500).send(err);
+            if (err) {
+                console.error('❌ Error al insertar en la base de datos:', err.sqlMessage);
+                return res.status(500).json({ error: err.sqlMessage });
+            }
+            console.log('✅ Registro insertado con ID:', result.insertId);
             res.json({ message: 'Mensaje enviado con éxito', id: result.insertId });
         }
     );
