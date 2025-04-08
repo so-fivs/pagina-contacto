@@ -57,8 +57,9 @@ db.connect(err => {
 
 // 📩 Ruta para recibir mensajes de contacto
 app.post('/potencial_cliente', (req, res) => {
+    console.log("📩 Datos recibidos:", req.body); // 👈 Aquí ves qué llega desde el frontend
     const { Nombre, Correo, Mensaje, telefono } = req.body;
-
+    
     if (!Nombre || !Correo || !telefono || !Mensaje) {
         return res.status(400).json({ error: 'Todos los campos son requeridos' });
     }
@@ -79,6 +80,7 @@ const storage = multer.diskStorage({
   });
   const upload = multer({ storage });
   app.post('/potencial_empleado', upload.single('CV'), (req, res) => {
+    console.log("📩 Datos recibidos:", req.body); // 👈 Aquí ves qué llega desde el frontend
     console.log("📦 Body:", req.body);
     console.log("📎 File:", req.file);
 
