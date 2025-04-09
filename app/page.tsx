@@ -53,13 +53,13 @@ export default function Page() {
       description: "Registro transacciones, realizo conciliaciones bancarias y apoyo en la preparación de impuestos y reportes financieros.",
     },
     {
-      image: "https://randomuser.me/api/portraits/men/32.jpg",
+      image: "/images/auxObra.jpeg",
       name: "Jeferson Dimate",
       role: "Auxiliar de Obra Civil",
       description: "Asisto en labores de construcción, preparación de materiales e instalación, apoyando al equipo técnico en cada proyecto.",
     },
     {
-      image: "https://randomuser.me/api/portraits/men/32.jpg",
+      image: "/images/auxFac.jpeg",
       name: "Angie Ruíz",
       role: "Auxiliar de Facturación",
       description: "Elaboro cotizaciones, cuentas de cobro y facturas, digitalizo documentos y aseguro que los registros contables sean precisos y actualizados.",

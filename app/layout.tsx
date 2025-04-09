@@ -37,7 +37,7 @@ const nacelle = localFont({
 export const metadata: Metadata = {
   title: "CONSTRUCCIONES JM SAS",
   description: "Página de contacto para empresa de construcciones",
-  icons: "/images/favico.png"
+  icons: "/images/logoPestaña.png"
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

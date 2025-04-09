@@ -11,24 +11,22 @@ export default function Page() {
 
   const galleryMap: { [key: string]: string[] } = {
     Remodelaciones: [
-      "/images/remodelacion1.jpg",
-      "/images/remodelacion2.jpg",
+      "/images/remodelacionAntes.jpg",
+      "images/remodelacionDespues.jpg",
     ],
     Estructuras: [
-      "/images/estructura1.jpg",
-      "/images/estructura2.jpg",
+      "/images/esctructurasAntes.jpeg",
+      "/images/estructurasDespues.jpeg",
     ],
     Plomerías: [
-      "/images/plomeria1.jpg",
-      "/images/plomeria2.jpg",
+      "/images/tuberías.jpg",
     ],
     Impermeabilizaciones: [
       "/images/impermeabilizacion1.jpg",
       "/images/impermeabilizacion2.jpg",
     ],
     Enchapes: [
-      "/images/enchape1.jpg",
-      "/images/enchape2.jpg",
+      "/images/enchapesDespues.jpg",
     ],
     Drywall: [
       "/images/drywall1.jpg",
@@ -172,12 +170,12 @@ export default function Page() {
                   <span className="text-gray-700 text-lg">👤</span>
                 </div>
                 <div>
-                  <p className="text-gray-800 font-semibold">Carlos Ramírez</p>
-                  <p className="text-gray-500 text-sm">Remodelación de baño</p>
+                  <p className="text-gray-800 font-semibold">Catherine Mora</p>
+                  <p className="text-gray-500 text-sm">Remodelación de apartamento</p>
                 </div>
               </div>
               <p className="text-gray-700 italic text-lg">
-                “Excelente servicio, cumplieron con los tiempos y la calidad fue increíble. ¡Los recomiendo totalmente!”
+                “Me pareció perfecto su desempeño de trabajo, sus horarios y cumplimiento con los tiempos. Recomiendo la empresa porque entienden lo que el cliente busca”
               </p>
             </div>
 
@@ -188,12 +186,12 @@ export default function Page() {
                   <span className="text-gray-700 text-lg">👤</span>
                 </div>
                 <div>
-                  <p className="text-gray-800 font-semibold">Andrea Gómez</p>
-                  <p className="text-gray-500 text-sm">Construcción de estructura</p>
+                  <p className="text-gray-800 font-semibold">Edwin Barrera - Gerente Comercial GRAPSECOL.SAS</p>
+                  <p className="text-gray-500 text-sm">Obras completas</p>
                 </div>
               </div>
               <p className="text-gray-700 italic text-lg">
-                “Quedé impresionada con el profesionalismo y la atención al detalle. Un equipo confiable y eficiente.”
+                “Hemos realizado contratos de obra en diferentes oportunidades con la empresa, obteniendo como resultado satisfacción total gracias a la calidad de sus trabajos, al cumplimiento, la estética, la responsabilidad y el profesionalismo en la excelente ejecución de los compromisos adquiridos. ”
               </p>
             </div>
 
@@ -204,12 +202,12 @@ export default function Page() {
                   <span className="text-gray-700 text-lg">👤</span>
                 </div>
                 <div>
-                  <p className="text-gray-800 font-semibold">Juan Pérez</p>
-                  <p className="text-gray-500 text-sm">Impermeabilización</p>
+                  <p className="text-gray-800 font-semibold">Cesar Otálora - Representante Legal PROMO POP SAS</p>
+                  <p className="text-gray-500 text-sm">Remodelación de hogar y ejecución de obras</p>
                 </div>
               </div>
               <p className="text-gray-700 italic text-lg">
-                “El equipo hizo un trabajo impecable con la impermeabilización de mi casa. Gran calidad y atención.”
+                “Hemos contratado los servicios de la empresa en diversas ocasiones para la ejecución de obras. Los resultados obtenidos han sido de total satisfacción, gracias a la alta calidad de sus trabajos, su cumplimiento, la estética, la responsabilidad, profesionalismo y perfección, demostrado en la ejecución de los compromisos adquiridos.”
               </p>
             </div>
           </div>
