@@ -28,7 +28,6 @@ export default function ContactPage() {
     setSubmitStatus(null);
 
     try {
-      // Reemplaza esta URL con la de tu backend en Railway una vez desplegado
       const response = await fetch('https://pagina-contacto-production.up.railway.app/potencial_cliente', {
         method: 'POST',
         headers: {
@@ -53,7 +52,7 @@ export default function ContactPage() {
       setIsSubmitting(false);
     }
   };
-
+console.log("Renderizando página de contacto");
   return (
     <div>
       <Navbar />
@@ -79,8 +78,7 @@ export default function ContactPage() {
               </div>
             )}
 
-            {/* Se cierra correctamente la etiqueta <form> */}
-            <form className="space-y-6" onSubmit={handleSubmit}>
+            <form className="space-y-6" onSubmit={handleSubmit}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-gray-800 font-medium">Nombre Completo</label>
@@ -137,13 +135,14 @@ export default function ContactPage() {
               <div className="text-center">
                 <button 
                   type="submit" 
-                  className="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-200 shadow-md"
-                >
-                  Enviar Mensaje
+                  className="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-200 shadow-md">
+                  disabled={isSubmitting}>
+                  {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
                 </button>
               </div>
             </form>
           </div>
+
           {/* Sección de mensaje (Derecha) */}
           <div className="md:w-1/2">
             <h2 className="text-3xl font-semibold mb-4 text-blue-700">Asesoría y Cotización Personalizada</h2>
