@@ -58,7 +58,7 @@ export default function ContactPage() {
     <div>
       <Navbar />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-      <main className="pt-28 p-6 text-center mt-6">
+        <main className="pt-28 p-6 text-center mt-6">
           <h1 className="text-4xl sm:text-4xl font-bold mb-6 text-blue-700">Contáctanos</h1>
           <p className="mb-10 text-2xl text-black-700">¿Interesado en nuestros servicios?</p>
         </main>
@@ -79,7 +79,8 @@ export default function ContactPage() {
               </div>
             )}
 
-            <form className="space-y-6" onSubmit={handleSubmit}
+            {/* Se cierra correctamente la etiqueta <form> */}
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-gray-800 font-medium">Nombre Completo</label>
@@ -136,7 +137,8 @@ export default function ContactPage() {
               <div className="text-center">
                 <button 
                   type="submit" 
-                  className="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-200 shadow-md">
+                  className="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-200 shadow-md"
+                >
                   Enviar Mensaje
                 </button>
               </div>
