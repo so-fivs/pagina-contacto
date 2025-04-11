@@ -52,7 +52,7 @@ export default function ContactPage() {
       setIsSubmitting(false);
     }
   };
-
+console.log("Renderizando página de contacto");
   return (
     <div>
       <Navbar />
