@@ -28,7 +28,10 @@ app.use(express.urlencoded({ extended: true }));
 
 // 🔁 Multer configurado para guardar archivos en memoria (no en disco)
 const storage = multer.memoryStorage();
-const upload = multer({ storage });
+const upload = multer({ 
+    storage,
+    limits: { fileSize: 10 * 1024 * 1024 } // Limitar el tamaño máximo de archivo a 10MB
+});
 
 // ✅ Conexión MySQL
 const db = mysql.createConnection({
@@ -74,6 +77,10 @@ app.post('/potencial_empleado', upload.single('CV'), (req, res) => {
     if (!Nombre || !Correo || !Mensaje || !telefono || !req.file) {
         return res.status(400).json({ error: 'Todos los campos son requeridos, incluyendo el archivo' });
     }
+
+    // Depuración del archivo recibido
+    console.log('Tamaño del archivo recibido:', req.file.size); // Ver el tamaño del archivo
+    console.log('Primeros bytes del archivo:', req.file.buffer.toString('hex').slice(0, 50)); // Mostrar los primeros 50 bytes en hexadecimal
 
     const cvBuffer = req.file.buffer;
 
