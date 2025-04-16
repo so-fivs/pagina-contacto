@@ -10,9 +10,9 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// 🌐 CORS con dominios de desarrollo y producción
+// 🌐 CORS con dominios de desarrollo y producción (sin barra final)
 app.use(cors({
-    origin: ['https://pagina-contacto.vercel.app/', 'http://localhost:3000'],
+    origin: ['https://pagina-contacto.vercel.app', 'http://localhost:3000'],
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type']
 }));
@@ -47,7 +47,7 @@ db.connect(err => {
 // Ruta para potencial_cliente
 app.post('/potencial_cliente', (req, res) => {
     const { Nombre, Correo, Mensaje, telefono } = req.body;
-    
+
     if (!Nombre || !Correo || !telefono || !Mensaje) {
         return res.status(400).json({ error: 'Todos los campos son requeridos' });
     }
