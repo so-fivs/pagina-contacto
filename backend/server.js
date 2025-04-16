@@ -10,12 +10,20 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// 🌐 CORS con dominios de desarrollo y producción (sin barra final)
+// ✅ Middleware CORS al inicio y sin barra final en origin
 app.use(cors({
     origin: ['https://pagina-contacto.vercel.app', 'http://localhost:3000'],
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type']
+    credentials: true
 }));
+
+// ✅ Agregamos headers manuales para asegurarnos que se respondan
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://pagina-contacto.vercel.app');
+    res.header('Access-Control-Allow-Methods', 'GET, POST');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 
 // Middlewares
 app.use(bodyParser.json());
