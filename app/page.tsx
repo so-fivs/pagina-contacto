@@ -1,4 +1,8 @@
+"use client";
 import React from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Image from "next/image";
@@ -6,6 +10,8 @@ import Spotlight from "@/components/spotlight";
 import { useMemo } from "react";
 import { Hammer, Eye, Handshake } from "lucide-react";
 type InfoCardTitle = "Misión" | "Visión" | "Valores";
+
+
 
 interface InfoCardProps {
   title: InfoCardTitle;
@@ -20,7 +26,8 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, content }) => {
   }), []);
 
   return (
-    <div className="relative h-full overflow-hidden rounded-xl bg-white p-6 border border-gray-300 shadow-md text-center">
+    <div className="relative h-full overflow-hidden rounded-xl bg-white p-6 border border-gray-300 shadow-md text-center"
+    data-aos="zoom-in">
       <div className="flex justify-center mb-4">{iconMap[title]}</div>
       <h3 className="text-3xl font-bold text-gray-900 md:text-3xl mb-4">
         {title}
@@ -31,6 +38,14 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, content }) => {
 };
 
 export default function Page() {
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Duración de las animaciones
+      once: true,     // Solo una vez, al hacer scroll por primera vez
+    });
+  }, []);
+  
   
   const teamMembers = [
     {
@@ -79,7 +94,8 @@ export default function Page() {
       />
 
         {/*Texto de imagen*/}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pt-20 md:pt-24">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pt-20 md:pt-24"
+        data-aos="fade-right">
           <h1 className="text-white text-4xl md:text-5xl font-bold max-w-3xl">
             "Expertos en construir, remodelar y transformar tus espacios con calidad y confianza"
           </h1>
@@ -100,7 +116,8 @@ export default function Page() {
           <div className="pb-6 md:pb-2">
 
           {/* Section quienes somos */}
-            <div className="mx-auto max-w-3xl pb-12 text-center md:pb-12">
+            <div className="mx-auto max-w-3xl pb-12 text-center md:pb-12"
+            data-aos="fade-up">
               <div className="flex items-center gap-4 pb-8 relative">
                 <span className="flex-1 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent"></span>
                 <span className="text-gray-900 text-lg font-semibold tracking-wide uppercase">
@@ -158,13 +175,19 @@ export default function Page() {
       </section>
 
   {/* Línea de separación */}
-  <div className="flex items-center justify-center gap-4 pb-8 relative">
+  <div className="flex items-center justify-center gap-4 pb-8 relative"
+  data-aos="zoom-in"
+  data-aos-duration="1500"
+  >
           <span className="h-0.5 w-1/2 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></span>
         </div>
 
 {/*Nuestro equipo*/}
-    <section className="py-16 flex justify-center"> {/*Color de sección*/}
-  <div className="max-w-4xl w-full">
+    <section className="py-16 flex justify-center"
+    data-aos="zoom-in"
+    data-aos-duration="1500"> 
+    {/*Color de sección*/}
+    <div className="max-w-4xl w-full">
     <div className="text-center mb-12">
       <h2 className="text-3xl font-bold text-blue-700 md:text-4xl">Nuestro equipo de trabajo</h2>
       <p className="text-lg text-gray-900 mt-2">Conoce a los profesionales que hacen posible cada proyecto.</p>
@@ -174,7 +197,8 @@ export default function Page() {
       {teamMembers.map((member, index) => (
         <div
           key={member.name}
-          className={`flex items-center gap-6 p-6 rounded-xl shadow-lg bg-white transform transition duration-300 hover:scale-105 ${
+          data-aos="fade-up"
+          className={`flex items-center gap-6 p-6 rounded-xl shadow-lg bg-white transform transition duration-500${
             index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
           }`}
         >
@@ -187,8 +211,8 @@ export default function Page() {
             className="w-full h-full object-cover"
             style={{ objectFit: "cover" }}
           />
-
           </div>
+
           <div className="text-center md:text-left">
             <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
             <p className="text-lg text-gray-900 font-medium">{member.role}</p>

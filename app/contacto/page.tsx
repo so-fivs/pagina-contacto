@@ -10,7 +10,8 @@ export default function ContactPage() {
   return (
     <div>
       <Navbar />
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6"
+      data-aos="fade-up">
       <main className="pt-28 p-6 text-center mt-6">
           <h1 className="text-4xl sm:text-4xl font-bold mb-6 text-blue-700">Contáctanos</h1>
           <p className="mb-10 text-2xl text-black-700">¿Interesado en nuestros servicios?</p>
@@ -93,6 +94,13 @@ export default function ContactPage() {
               <br /><br />
               <span className="italic text-black-600">Construyamos juntos el futuro.</span>
             </p>
+            <div className="mt-6">
+              <img 
+                src="/images/contactanos.jpg" 
+                alt="fotoEmpresa"
+                className="rounded-lg shadow-md w-full max-w-sm mx-auto h-auto object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>

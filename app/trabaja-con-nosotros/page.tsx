@@ -11,7 +11,8 @@ export default function Page() {
   return (
     <div>
       <Navbar />
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6"
+      data-aos="fade-up">
       <main className="pt-28 p-6 text-center mt-6">
           <h1 className="text-4xl sm:text-4xl font-bold mb-6 text-blue-700">Trabaja con nosotros</h1>
           <p className="mb-10 text-2xl">¡Vacantes disponibles!</p>
@@ -44,7 +45,8 @@ export default function Page() {
         </div>
 
         {/* Formulario de aplicación */}
-        <div className="mt-12 bg-blue-50 p-8 rounded-lg shadow-md border border-gray-200">
+        <div className="mt-12 bg-blue-50 p-8 rounded-lg shadow-md border border-gray-200"
+        data-aos="fade-up">
           <h2 className="text-2xl font-semibold mb-6 text-center text-blue-700">Formulario de Aplicación</h2>
           <form className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
