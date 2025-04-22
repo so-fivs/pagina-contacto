@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react"; // Hamburguesa y cerrar (opcional)
+import { Menu, X } from "lucide-react";
 
 const Header = () => {
   const pathname = usePathname();
@@ -18,6 +18,7 @@ const Header = () => {
 
   return (
     <header className="bg-white shadow-md fixed top-0 w-full z-50">
+      {/* Línea azul superior */}
       <div className="bg-blue-500 h-2 w-full" />
 
       <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-4 sm:px-6 md:px-8">
@@ -30,7 +31,7 @@ const Header = () => {
           />
         </Link>
 
-        {/* Menú hamburguesa solo visible en móviles */}
+        {/* Botón hamburguesa (solo visible en móviles) */}
         <button
           className="md:hidden text-black"
           onClick={toggleMenu}
@@ -39,7 +40,7 @@ const Header = () => {
           {menuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
-        {/* Links visibles en pantallas medianas/grandes */}
+        {/* Navegación (visible en pantallas medianas y grandes) */}
         <nav className="hidden md:flex space-x-6">
           <Link href="/" className={linkClasses("/")}>Inicio</Link>
           <Link href="/servicios" className={linkClasses("/servicios")}>Servicios</Link>
@@ -48,13 +49,21 @@ const Header = () => {
         </nav>
       </div>
 
-      {/* Menú desplegable para móviles */}
+      {/* Menú desplegable en móviles */}
       {menuOpen && (
-        <div className="md:hidden px-4 pb-4 space-y-3 bg-white shadow">
-          <Link href="/" className={linkClasses("/")}>Inicio</Link>
-          <Link href="/servicios" className={linkClasses("/servicios")}>Servicios</Link>
-          <Link href="/trabaja-con-nosotros" className={linkClasses("/trabaja-con-nosotros")}>Trabaja con Nosotros</Link>
-          <Link href="/contacto" className={linkClasses("/contacto")}>Contacto</Link>
+        <div className="md:hidden flex flex-col items-start px-6 py-4 space-y-4 bg-white shadow-lg border-t border-gray-200">
+          <Link href="/" onClick={() => setMenuOpen(false)} className={linkClasses("/")}>
+            Inicio
+          </Link>
+          <Link href="/servicios" onClick={() => setMenuOpen(false)} className={linkClasses("/servicios")}>
+            Servicios
+          </Link>
+          <Link href="/trabaja-con-nosotros" onClick={() => setMenuOpen(false)} className={linkClasses("/trabaja-con-nosotros")}>
+            Trabaja con Nosotros
+          </Link>
+          <Link href="/contacto" onClick={() => setMenuOpen(false)} className={linkClasses("/contacto")}>
+            Contacto
+          </Link>
         </div>
       )}
     </header>
@@ -62,5 +71,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
