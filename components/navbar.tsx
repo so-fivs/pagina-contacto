@@ -1,50 +1,66 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react"; // Hamburguesa y cerrar (opcional)
 
 const Header = () => {
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const linkClasses = (href: string) =>
-    `uppercase font-semibold text-xs sm:text-sm md:text-base ${
+    `uppercase font-semibold text-sm md:text-base ${
       pathname === href ? "text-blue-700" : "text-black"
     } hover:text-blue-700 transition-colors whitespace-nowrap`;
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
     <header className="bg-white shadow-md fixed top-0 w-full z-50">
       <div className="bg-blue-500 h-2 w-full" />
 
-      <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 sm:px-6 md:px-8 overflow-x-auto">
-        {/* Logo a la izquierda con tamaño ajustable en móviles */}
+      <div className="max-w-7xl mx-auto flex justify-between items-center py-3 px-4 sm:px-6 md:px-8">
+        {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <img
             src="/images/nitcorregido.png"
             alt="Logo"
-            className="h-10 sm:h-12 md:h-16 lg:h-18 w-auto cursor-pointer" // Tamaño ajustable
+            className="h-10 sm:h-12 md:h-16 w-auto"
           />
         </Link>
 
-        {/* Navegación a la derecha */}
-        <nav className="flex flex-row justify-center sm:justify-end gap-x-4 gap-y-2 max-w-full overflow-x-auto flex-wrap">
-          <Link href="/" className={linkClasses("/")}>
-            Inicio
-          </Link>
-          <Link href="/servicios" className={linkClasses("/servicios")}>
-            Servicios
-          </Link>
-          <Link href="/trabaja-con-nosotros" className={linkClasses("/trabaja-con-nosotros")}>
-            Trabaja con Nosotros
-          </Link>
-          <Link href="/contacto" className={linkClasses("/contacto")}>
-            Contacto
-          </Link>
+        {/* Menú hamburguesa solo visible en móviles */}
+        <button
+          className="md:hidden text-black"
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+
+        {/* Links visibles en pantallas medianas/grandes */}
+        <nav className="hidden md:flex space-x-6">
+          <Link href="/" className={linkClasses("/")}>Inicio</Link>
+          <Link href="/servicios" className={linkClasses("/servicios")}>Servicios</Link>
+          <Link href="/trabaja-con-nosotros" className={linkClasses("/trabaja-con-nosotros")}>Trabaja con Nosotros</Link>
+          <Link href="/contacto" className={linkClasses("/contacto")}>Contacto</Link>
         </nav>
       </div>
+
+      {/* Menú desplegable para móviles */}
+      {menuOpen && (
+        <div className="md:hidden px-4 pb-4 space-y-3 bg-white shadow">
+          <Link href="/" className={linkClasses("/")}>Inicio</Link>
+          <Link href="/servicios" className={linkClasses("/servicios")}>Servicios</Link>
+          <Link href="/trabaja-con-nosotros" className={linkClasses("/trabaja-con-nosotros")}>Trabaja con Nosotros</Link>
+          <Link href="/contacto" className={linkClasses("/contacto")}>Contacto</Link>
+        </div>
+      )}
     </header>
   );
 };
 
 export default Header;
+
 
