@@ -1,5 +1,4 @@
-import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
-
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -11,8 +10,7 @@ export default function Footer() {
         <div
           className="pointer-events-none absolute bottom-0 left-1/2 -z-10 -translate-x-1/2"
           aria-hidden="true"
-          >
-        </div>
+        ></div>
 
         <div className="py-6">
           {/* Información de contacto */}
@@ -48,8 +46,8 @@ export default function Footer() {
             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
               <FaFacebook className="hover:text-blue-500 text-2xl" />
             </a>
-            <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-              <FaTwitter className="hover:text-blue-400 text-2xl" />
+            <a href="https://www.instagram.com/tu_usuario" target="_blank" rel="noopener noreferrer">
+              <FaInstagram className="hover:text-pink-600 text-2xl" />
             </a>
             <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
               <FaLinkedin className="hover:text-blue-700 text-2xl" />
@@ -60,3 +58,4 @@ export default function Footer() {
     </footer>
   );
 }
+
