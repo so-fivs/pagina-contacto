@@ -21,6 +21,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+//SOFIA ESTUVO AQUIIIIIIIIIIIIIIII
 // Fuente local
 const nacelle = localFont({
   src: [
