@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000;
 
 // ✅ Middleware CORS
 app.use(cors({
-    origin: ['https://pagina-contacto.vercel.app', 'http://localhost:3000', 'https://pagina-contacto-2meckeddm-sofi-vs-projects.vercel.app/','https://pagina-contacto-git-pagina-final-sofi-vs-projects.vercel.app/'],
+    origin: ['https://pagina-contacto.vercel.app', 'http://localhost:3000', 'https://pagina-contacto-2meckeddm-sofi-vs-projects.vercel.app/','https://pagina-contacto-git-pagina-final-sofi-vs-projects.vercel.app/','https://pagina-contacto-git-pagina-final-sofi-vs-projects.vercel.app/trabaja-con-nosotros','https://pagina-contacto-git-pagina-final-sofi-vs-projects.vercel.app/contacto'],
     methods: ['GET', 'POST'],
     credentials: true
 }));
