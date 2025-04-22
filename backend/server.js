@@ -10,18 +10,10 @@ const PORT = process.env.PORT || 5000;
 
 // ✅ Middleware CORS
 app.use(cors({
-    origin: ['https://pagina-contacto.vercel.app', 'http://localhost:3000'],
+    origin: ['https://pagina-contacto.vercel.app', 'http://localhost:3000', 'https://pagina-contacto-2meckeddm-sofi-vs-projects.vercel.app/','https://pagina-contacto-git-pagina-final-sofi-vs-projects.vercel.app/'],
     methods: ['GET', 'POST'],
     credentials: true
 }));
-
-// ✅ Headers manuales
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://pagina-contacto.vercel.app');
-    res.header('Access-Control-Allow-Methods', 'GET, POST');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
