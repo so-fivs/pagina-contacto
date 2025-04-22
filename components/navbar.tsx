@@ -27,7 +27,7 @@ const Header = () => {
         </Link>
 
         {/* Navegación a la derecha */}
-        <nav className="flex flex-wrap justify-center sm:justify-end gap-x-4 gap-y-2 max-w-full overflow-x-auto">
+        <nav className="flex flex-row justify-center sm:justify-end gap-x-4 gap-y-2 max-w-full overflow-x-auto flex-wrap">
           <Link href="/" className={linkClasses("/")}>
             Inicio
           </Link>
@@ -47,5 +47,4 @@ const Header = () => {
 };
 
 export default Header;
-
 
