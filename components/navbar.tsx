@@ -8,7 +8,7 @@ const Header = () => {
   const pathname = usePathname();
 
   const linkClasses = (href: string) =>
-    `uppercase font-semibold text-sm md:text-base ${
+    `uppercase font-semibold text-xs sm:text-sm md:text-base ${
       pathname === href ? "text-blue-700" : "text-black"
     } hover:text-blue-700 transition-colors whitespace-nowrap`;
 
@@ -22,7 +22,7 @@ const Header = () => {
           <img
             src="/images/nitcorregido.png"
             alt="Logo"
-            className="h-12 sm:h-14 md:h-16 w-auto cursor-pointer"
+            className="h-10 sm:h-12 md:h-16 lg:h-18 w-auto cursor-pointer" // Tamaño ajustable
           />
         </Link>
 
@@ -47,4 +47,5 @@ const Header = () => {
 };
 
 export default Header;
+
 
