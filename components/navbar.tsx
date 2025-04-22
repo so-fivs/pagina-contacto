@@ -17,17 +17,17 @@ const Header = () => {
       <div className="bg-blue-500 h-2 w-full" />
 
       <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 sm:px-6 md:px-8 overflow-x-auto">
-        {/* Logo a la izquierda */}
+        {/* Logo a la izquierda con tamaño ajustable en móviles */}
         <Link href="/" className="flex-shrink-0">
           <img
             src="/images/nitcorregido.png"
             alt="Logo"
-            className="h-14 sm:h-16 w-auto cursor-pointer"
+            className="h-12 sm:h-14 md:h-16 w-auto cursor-pointer"
           />
         </Link>
 
         {/* Navegación a la derecha */}
-        <nav className="flex flex-wrap justify-end gap-x-4 gap-y-2 max-w-full overflow-x-auto">
+        <nav className="flex flex-wrap justify-center sm:justify-end gap-x-4 gap-y-2 max-w-full overflow-x-auto">
           <Link href="/" className={linkClasses("/")}>
             Inicio
           </Link>
@@ -47,3 +47,4 @@ const Header = () => {
 };
 
 export default Header;
+
