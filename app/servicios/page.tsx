@@ -19,7 +19,34 @@ export default function Page() {
       "/images/esctructurasAntes.jpeg",
       "/images/estructurasDespues.jpeg",
     ],
-    // ... (resto del objeto de imágenes)
+    Plomerías: [
+      "/images/tuberías.jpg",
+    ],
+    Impermeabilizaciones: [
+      "/images/impermeabilizacion.jpg",
+    ],
+    Enchapes: [
+      "/images/enchapesDespues.jpg",
+    ],
+    Drywall: [
+      "/images/drywallAntes.jpg",
+    ],
+    Pintura: [
+      "/images/pinturas.webp",
+    ],
+    Fachadas: [
+      "/images/Fachada.jpg",
+    ],
+    Locativos: [
+      "/images/locativosAntes.jpg",
+      "/images/locativosDespues.jpg",
+    ],
+    Terminaciones: [
+      "/images/terminaciones.jpg",
+    ],
+    Diseños: [
+      "/images/diseños.png",
+    ],
   };
 
   const openGallery = (serviceName: string) => {
@@ -46,9 +73,59 @@ export default function Page() {
       desc: "Transformamos tus espacios con remodelaciones innovadoras y funcionales.",
       img: "remodelaciones.png",
     },
-    // ... (resto de servicios)
+    {
+      title: "Estructuras",
+      desc: "Construimos estructuras sólidas y seguras para cualquier tipo de proyecto.",
+      img: "estructuras.png",
+    },
+    {
+      title: "Plomerías",
+      desc: "Ofrecemos soluciones eficientes en plomería para garantizar el correcto funcionamiento de tu red hidráulica",
+      img: "plomerias.png",
+    },
+    {
+      title: "Impermeabilizaciones",
+      desc: "Protegemos tus espacios con impermeabilizaciones de alta calidad y durabilidad.",
+      img: "impermeabilizaciones.png",
+    },
+    {
+      title: "Enchapes",
+      desc: "Realizamos enchapes con acabados perfectos para embellecer cualquier ambiente..",
+      img: "enchapes.png",
+    },
+    {
+      title: "Drywall",
+      desc: "Implementamos sistemas de drywall para espacios modernos y versátiles.",
+      img: "drywall.png",
+    },
+    {
+      title: "Pintura",
+      desc: "Aplicamos pintura profesional para dar vida y estilo a tus espacios",
+      img: "pintura.png",
+    },
+    {
+      title: "Fachadas",
+      desc: "Renovamos fachadas con diseños elegantes y materiales resistentes.",
+      img: "fachada.png",
+    },
+    {
+      title: "Locativos",
+      desc: "Ejecutamos mantenimientos locativos para conservar tus instalaciones en óptimas condiciones.",
+      img: "locativos.png",
+    },
+    {
+      title: "Terminaciones",
+      desc: "Cuidamos cada detalle con terminaciones impecables en todas nuestras obras",
+      img: "terminaciones.png",
+    },
+    {
+      title: "Diseños",
+      desc: "Creamos diseños personalizados que combinan estética y funcionalidad.",
+      img: "diseño.png",
+    },
   ];
 
+  // Inicialización de AOS en el efecto useEffect
   useEffect(() => {
     AOS.init({
       duration: 1000, // Duración de las animaciones
@@ -59,14 +136,10 @@ export default function Page() {
   return (
     <div>
       <Navbar />
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6" data-aos="fade-up">
         <main className="pt-28 p-6 text-center mt-6">
-          <h1 className="text-4xl sm:text-4xl font-bold mb-6 text-blue-700" data-aos="fade-up">
-            Servicios
-          </h1>
-          <p className="mb-10 text-2xl text-black-700" data-aos="fade-up">
-            Descubre nuestros servicios de construcción.
-          </p>
+          <h1 className="text-4xl sm:text-4xl font-bold mb-6 text-blue-700">Servicios</h1>
+          <p className="mb-10 text-2xl text-black-700">Descubre nuestros servicios de construcción.</p>
         </main>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -75,7 +148,8 @@ export default function Page() {
               key={title}
               onClick={() => openGallery(title)}
               className="cursor-pointer p-5 rounded-2xl bg-blue-50 shadow hover:shadow-md transition active:scale-105"
-              data-aos="zoom-in"
+              data-aos="zoom-in" // Añadido AOS para animación en este elemento
+              data-aos-duration="1000"
             >
               <div className="mb-3">
                 <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
@@ -89,17 +163,17 @@ export default function Page() {
         </div>
 
         {/* Sección de Reseñas */}
-        <section className="mt-16 mb-16">
+        <section className="mt-16 mb-16" data-aos="zoom-in" data-aos-duration="1500">
           <div className="border-t py-1 [border-image:linear-gradient(to_right,transparent,rgba(148,163,184,0.25),transparent)1] mb-6"></div>
-          <h2 className="text-3xl font-bold text-center mb-10 text-blue-700" data-aos="fade-up">
-            Lo que dicen nuestros clientes
-          </h2>
+          <h2 className="text-3xl font-bold text-center mb-10 text-blue-700 md:text-3xl">Lo que dicen nuestros clientes</h2>
           <div className="space-y-10">
             {/* Reseña 1 */}
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-up">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            data-aos="zoom-in"
+            data-aos-duration="1000">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center shadow-sm">
-                  <span className="text-gray-700 text-lg">👤</span>
+                  <span className="text-gray-700 text-lg">👩‍💼</span>
                 </div>
                 <div>
                   <p className="text-gray-800 font-semibold">Catherine Mora</p>
@@ -112,10 +186,12 @@ export default function Page() {
             </div>
 
             {/* Reseña 2 */}
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300" data-aos="fade-up">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            data-aos="zoom-in"
+            data-aos-duration="1000">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center shadow-sm">
-                  <span className="text-gray-700 text-lg">👤</span>
+                  <span className="text-gray-700 text-lg">🧑‍💼</span>
                 </div>
                 <div>
                   <p className="text-gray-800 font-semibold">Edwin Barrera - Gerente Comercial GRAPSECOL.SAS</p>
@@ -126,55 +202,29 @@ export default function Page() {
                 “Hemos realizado contratos de obra en diferentes oportunidades con la empresa, obteniendo como resultado satisfacción total gracias a la calidad de sus trabajos, al cumplimiento, la estética, la responsabilidad y el profesionalismo en la excelente ejecución de los compromisos adquiridos. ”
               </p>
             </div>
+
+            {/* Reseña 3 */}
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            data-aos="zoom-in"
+            data-aos-duration="1000">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center shadow-sm">
+                  <span className="text-gray-700 text-lg">👨‍💼</span>
+                </div>
+                <div>
+                  <p className="text-gray-800 font-semibold">Carlos Ramírez - CEO Empresa Constructora</p>
+                  <p className="text-gray-500 text-sm">Construcción de viviendas</p>
+                </div>
+              </div>
+              <p className="text-gray-700 italic text-lg">
+                “Excelente experiencia, los trabajos realizados fueron entregados en el tiempo estipulado y con un acabado muy profesional.”
+              </p>
+            </div>
           </div>
         </section>
       </div>
-
-      {isOpen && selectedService && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="bg-white p-6 rounded-xl shadow-xl max-w-2xl w-full text-center relative" data-aos="fade-in">
-            <button
-              onClick={closeGallery}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl"
-            >
-              ✕
-            </button>
-            <h3 className="text-2xl font-bold mb-4 text-blue-700">Galería de {selectedService}</h3>
-            <div className="relative">
-              <img
-                src={galleryMap[selectedService][currentImageIndex]}
-                alt={`${selectedService} ${currentImageIndex + 1}`}
-                className="mx-auto rounded-lg shadow max-h-[500px] object-contain"
-              />
-
-              <button
-                onClick={prevImage}
-                className="absolute top-1/2 left-3 transform -translate-y-1/2 bg-white/70 hover:bg-white text-gray-700 hover:text-black p-2 rounded-full shadow transition-all"
-                aria-label="Anterior"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-
-              <button
-                onClick={nextImage}
-                className="absolute top-1/2 right-3 transform -translate-y-1/2 bg-white/70 hover:bg-white text-gray-700 hover:text-black p-2 rounded-full shadow transition-all"
-                aria-label="Siguiente"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
-
-            <p className="mt-4 text-gray-700">
-              {currentImageIndex + 1} de {galleryMap[selectedService].length}
-            </p>
-          </div>
-        </div>
-      )}
       <Footer />
     </div>
   );
 }
+
