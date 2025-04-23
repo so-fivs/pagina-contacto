@@ -85,14 +85,14 @@ export default function Page() {
   return (
     <div>
       <Navbar />
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6" data-aos="fade-up">
         <main className="pt-28 p-6 text-center mt-6">
           <h1 className="text-4xl sm:text-4xl font-bold mb-6 text-blue-700">Trabaja con nosotros</h1>
           <p className="mb-10 text-2xl">¡Vacantes disponibles!</p>
         </main>
 
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
-          <div className="md:w-1/2 text-left">
+          <div className="md:w-1/2 text-left" data-aos="fade-up">
             <h2 className="text-3xl font-semibold mb-4 text-blue-700">Únete a nuestro equipo</h2>
             <p className="text-lg text-gray-900">
               En Construcciones JM SAS, buscamos personas con ganas de trabajar,
@@ -114,7 +114,7 @@ export default function Page() {
           </div>
         </div>
 
-        <div className="mt-12 bg-blue-50 p-8 rounded-lg shadow-md border border-gray-200">
+        <div className="mt-12 bg-blue-50 p-8 rounded-lg shadow-md border border-gray-200" data-aos="fade-up">
           <h2 className="text-2xl font-semibold mb-6 text-center text-blue-700">Formulario de Aplicación</h2>
           
           {submitStatus === "success" && (
@@ -219,8 +219,10 @@ export default function Page() {
           </form>
         </div>
       </div>
-      <div className="mb-15" />
-      <Footer />
+
+      <div className="mt-12 mb-12 md:mb-24" data-aos="fade-up">
+        <Footer />
+      </div>
     </div>
   );
 }
