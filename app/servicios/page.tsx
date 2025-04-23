@@ -40,15 +40,21 @@ export default function Page() {
   const closeGallery = () => setIsOpen(false);
 
   const nextImage = () => {
-    const images = galleryMap[selectedService ?? ""] || [];
-    setIsImageLoaded(false);
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    if (!selectedService) return;
+    const images = galleryMap[selectedService];
+    if (currentImageIndex < images.length - 1) {
+      setIsImageLoaded(false);
+      setCurrentImageIndex((prev) => prev + 1);
+    }
   };
 
   const prevImage = () => {
-    const images = galleryMap[selectedService ?? ""] || [];
-    setIsImageLoaded(false);
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    if (!selectedService) return;
+    const images = galleryMap[selectedService];
+    if (currentImageIndex > 0) {
+      setIsImageLoaded(false);
+      setCurrentImageIndex((prev) => prev - 1);
+    }
   };
 
   const services = [
@@ -118,14 +124,8 @@ export default function Page() {
 
       {isOpen && selectedService && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div
-            className="bg-white p-6 rounded-xl shadow-xl max-w-2xl w-full text-center relative"
-            data-aos="fade-zoom-in"
-          >
-            <button
-              onClick={closeGallery}
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl"
-            >
+          <div className="bg-white p-6 rounded-xl shadow-xl max-w-2xl w-full text-center relative" data-aos="fade-zoom-in">
+            <button onClick={closeGallery} className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl">
               ✕
             </button>
             <h3 className="text-2xl font-bold mb-4 text-blue-700">Galería de {selectedService}</h3>
@@ -143,18 +143,22 @@ export default function Page() {
                 }`}
                 onLoad={() => setIsImageLoaded(true)}
               />
-              <button
-                onClick={prevImage}
-                className="absolute top-1/2 left-3 transform -translate-y-1/2 text-white bg-black p-2 rounded-full"
-              >
-                &#60;
-              </button>
-              <button
-                onClick={nextImage}
-                className="absolute top-1/2 right-3 transform -translate-y-1/2 text-white bg-black p-2 rounded-full"
-              >
-                &#62;
-              </button>
+              {galleryMap[selectedService].length > 1 && currentImageIndex > 0 && (
+                <button
+                  onClick={prevImage}
+                  className="absolute top-1/2 left-3 transform -translate-y-1/2 text-white bg-black p-2 rounded-full"
+                >
+                  &#60;
+                </button>
+              )}
+              {galleryMap[selectedService].length > 1 && currentImageIndex < galleryMap[selectedService].length - 1 && (
+                <button
+                  onClick={nextImage}
+                  className="absolute top-1/2 right-3 transform -translate-y-1/2 text-white bg-black p-2 rounded-full"
+                >
+                  &#62;
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -164,5 +168,4 @@ export default function Page() {
     </div>
   );
 }
-
 
