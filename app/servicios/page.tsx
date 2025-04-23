@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -95,7 +95,7 @@ export default function Page() {
     },
     {
       title: "Enchapes",
-      desc: "Realizamos enchapes con acabados perfectos para embellecer cualquier ambiente..",
+      desc: "Realizamos enchapes con acabados perfectos para embellecer cualquier ambiente.",
       img: "enchapes.png",
     },
     {
@@ -105,7 +105,7 @@ export default function Page() {
     },
     {
       title: "Pintura",
-      desc: "Aplicamos pintura profesional para dar vida y estilo a tus espacios",
+      desc: "Aplicamos pintura profesional para dar vida y estilo a tus espacios.",
       img: "pintura.png",
     },
     {
@@ -120,7 +120,7 @@ export default function Page() {
     },
     {
       title: "Terminaciones",
-      desc: "Cuidamos cada detalle con terminaciones impecables en todas nuestras obras",
+      desc: "Cuidamos cada detalle con terminaciones impecables en todas nuestras obras.",
       img: "terminaciones.png",
     },
     {
@@ -162,7 +162,30 @@ export default function Page() {
           <div className="border-t py-1 [border-image:linear-gradient(to_right,transparent,rgba(148,163,184,0.25),transparent)1] mb-6"></div>
           <h2 className="text-3xl font-bold text-center mb-10 text-blue-700 md:text-3xl">Lo que dicen nuestros clientes</h2>
           <div className="space-y-10">
-            {/* Reseñas aquí */}
+            {/* Reseña 1 */}
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <p className="text-gray-800 text-lg">
+                "Excelente servicio. Todo quedó tal como lo imaginamos. Los recomiendo ampliamente."
+              </p>
+              <p className="font-semibold mt-4">Carlos Gómez</p>
+              <p className="text-gray-500">Cliente satisfecho</p>
+            </div>
+            {/* Reseña 2 */}
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <p className="text-gray-800 text-lg">
+                "Muy profesionales. Nos ayudaron a darle un toque único a nuestra casa. ¡Gracias!"
+              </p>
+              <p className="font-semibold mt-4">Laura Martínez</p>
+              <p className="text-gray-500">Cliente satisfecho</p>
+            </div>
+            {/* Reseña 3 */}
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+              <p className="text-gray-800 text-lg">
+                "Gran trabajo. Cumplieron con todos los plazos y el resultado final fue impresionante."
+              </p>
+              <p className="font-semibold mt-4">Fernando Pérez</p>
+              <p className="text-gray-500">Cliente satisfecho</p>
+            </div>
           </div>
         </section>
       </div>
@@ -204,5 +227,4 @@ export default function Page() {
     </div>
   );
 }
-
 
