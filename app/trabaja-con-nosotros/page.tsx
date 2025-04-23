@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { UploadCloud } from "lucide-react";
 
 export default function Page() {
   const [formData, setFormData] = useState({
@@ -19,10 +20,7 @@ export default function Page() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +38,6 @@ export default function Page() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (!cvFile || fileError) {
       setFileError("Por favor, adjunta un archivo PDF válido.");
       return;
@@ -92,28 +89,25 @@ export default function Page() {
         </main>
 
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 px-4 md:px-0">
-      <div className="w-full md:w-1/2 text-center md:text-left" data-aos="fade-up">
-        <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-blue-700">
-          Únete a nuestro equipo
-        </h2>
-        <p className="text-base md:text-lg text-gray-900 leading-relaxed md:leading-loose">
-          En <strong>Construcciones JM SAS</strong>, buscamos personas con ganas de trabajar,
-          aprender y crecer en el sector de la construcción. Valoramos el 
-          compromiso, la responsabilidad y la pasión por hacer bien las cosas.
-          <br className="hidden md:block" />
-          Creemos en el trabajo en equipo como la clave para lograr grandes resultados.
-          <br className="hidden md:block" />
-          Si deseas formar parte de un equipo que transforma espacios con calidad y creatividad,
-          llena el formulario y da el primer paso hacia nuevas oportunidades laborales.
-          <br className="hidden md:block" />
-          <span className="font-medium text-blue-600">¡Tu talento y esfuerzo pueden marcar la diferencia!</span>
-        </p>
-      </div>
-    </div>
+          <div className="w-full md:w-1/2 text-center md:text-left" data-aos="fade-up">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-blue-700">
+              Únete a nuestro equipo
+            </h2>
+            <p className="text-base md:text-lg text-gray-900 leading-relaxed md:leading-loose">
+              En <strong>Construcciones JM SAS</strong>, buscamos personas con ganas de trabajar,
+              aprender y crecer en el sector de la construcción. Valoramos el compromiso,
+              la responsabilidad y la pasión por hacer bien las cosas.
+              <br className="hidden md:block" />
+              Si deseas formar parte de un equipo que transforma espacios con calidad y creatividad,
+              llena el formulario y da el primer paso hacia nuevas oportunidades laborales.
+              <br className="hidden md:block" />
+              <span className="font-medium text-blue-600">¡Tu talento y esfuerzo pueden marcar la diferencia!</span>
+            </p>
+          </div>
           <div className="md:w-1/2 flex justify-center">
-            <img 
-              src="/images/fotoFamiliar.jpeg" 
-              alt="Equipo de trabajo" 
+            <img
+              src="/images/fotoFamiliar.jpeg"
+              alt="Equipo de trabajo"
               className="w-full max-w-sm max-h-110 object-cover rounded-lg shadow-lg"
             />
           </div>
@@ -121,7 +115,7 @@ export default function Page() {
 
         <div className="mt-12 bg-blue-50 p-8 rounded-lg shadow-md border border-gray-200" data-aos="fade-up">
           <h2 className="text-2xl font-semibold mb-6 text-center text-blue-700">Formulario de Aplicación</h2>
-          
+
           {submitStatus === "success" && (
             <div className="mb-4 p-4 bg-green-100 text-green-700 rounded">
               ¡Solicitud enviada con éxito! Revisaremos tu CV y nos pondremos en contacto.
@@ -138,50 +132,50 @@ export default function Page() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label className="block text-gray-800 font-medium">Nombre Completo</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="Nombre"
-                  className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none" 
-                  placeholder="Tu nombre" 
+                  className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                  placeholder="Tu nombre"
                   value={formData.Nombre}
                   onChange={handleChange}
-                  required 
+                  required
                 />
               </div>
               <div>
                 <label className="block text-gray-800 font-medium">Correo Electrónico</label>
-                <input 
-                  type="email" 
+                <input
+                  type="email"
                   name="Correo"
-                  className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none" 
-                  placeholder="tucorreo@email.com" 
+                  className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                  placeholder="tucorreo@email.com"
                   value={formData.Correo}
                   onChange={handleChange}
-                  required 
+                  required
                 />
               </div>
             </div>
 
             <div>
               <label className="block text-gray-800 font-medium">Teléfono</label>
-              <input 
-                type="tel" 
+              <input
+                type="tel"
                 name="telefono"
-                className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none" 
-                placeholder="Tu número de contacto" 
+                className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                placeholder="Tu número de contacto"
                 value={formData.telefono}
                 onChange={handleChange}
-                required 
+                required
               />
             </div>
 
             <div>
               <label className="block text-gray-700 font-medium">Experiencia (opcional)</label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 name="Experiencia"
-                className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none" 
-                placeholder="Años de experiencia en el sector" 
+                className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                placeholder="Años de experiencia en el sector"
                 value={formData.Experiencia}
                 onChange={handleChange}
               />
@@ -189,46 +183,47 @@ export default function Page() {
 
             <div>
               <label className="block text-gray-800 font-medium">Mensaje</label>
-              <textarea 
-                className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none" 
-                rows={4} 
+              <textarea
+                className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                rows={4}
                 name="Mensaje"
-                placeholder="Déjanos tu mensaje..." 
+                placeholder="Déjanos tu mensaje..."
                 value={formData.Mensaje}
                 onChange={handleChange}
                 required
               />
             </div>
-              <div>
-    <label className="block text-gray-800 font-medium mb-2">Adjunta tu CV (Solo PDF)</label>
-  
-    <div className="relative w-full">
-      <input 
-        type="file" 
-        id="fileUpload"
-        className="absolute inset-0 opacity-0 cursor-pointer"
-        accept=".pdf"
-        onChange={handleFileChange}
-        required
-      />
-      <label
-        htmlFor="fileUpload"
-        className="inline-block bg-white border border-gray-300 text-gray-800 font-medium py-2.5 px-4 rounded-lg cursor-pointer hover:bg-gray-100 transition duration-200 shadow-sm"
-      >
-        Seleccionar archivo PDF
-      </label>
-      {cvFile && (
-        <p className="mt-2 text-sm text-gray-600">
-          Archivo seleccionado: <span className="font-medium">{cvFile.name}</span>
-        </p>
-      )}
-      {fileError && <p className="text-red-600 mt-2">{fileError}</p>}
-    </div>
-  </div>
+
+            <div>
+              <label className="block text-gray-800 font-medium mb-2">Adjunta tu CV (Solo PDF)</label>
+              <div className="relative w-full">
+                <input
+                  type="file"
+                  id="fileUpload"
+                  className="absolute inset-0 opacity-0 cursor-pointer"
+                  accept=".pdf"
+                  onChange={handleFileChange}
+                  required
+                />
+                <label
+                  htmlFor="fileUpload"
+                  className="flex items-center gap-2 justify-center bg-yellow-400 text-black font-semibold py-2 px-4 rounded-md cursor-pointer hover:bg-yellow-500 transition duration-200"
+                >
+                  <UploadCloud className="w-5 h-5" />
+                  Subir archivo PDF
+                </label>
+                {cvFile && (
+                  <p className="mt-2 text-sm text-gray-600">
+                    Archivo seleccionado: <span className="font-medium">{cvFile.name}</span>
+                  </p>
+                )}
+                {fileError && <p className="text-red-600 mt-2">{fileError}</p>}
+              </div>
+            </div>
 
             <div className="text-center">
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 disabled={isSubmitting}
                 className="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 transition duration-200 shadow-md disabled:bg-blue-300"
               >
@@ -245,4 +240,5 @@ export default function Page() {
     </div>
   );
 }
+
 
