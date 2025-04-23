@@ -91,20 +91,25 @@ export default function Page() {
           <p className="mb-10 text-2xl">¡Vacantes disponibles!</p>
         </main>
 
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
-          <div className="md:w-1/2 text-left" data-aos="fade-up">
-            <h2 className="text-3xl font-semibold mb-4 text-blue-700">Únete a nuestro equipo</h2>
-            <p className="text-lg text-gray-900">
-              En Construcciones JM SAS, buscamos personas con ganas de trabajar,
-              aprender y crecer en el sector de la construcción. Valoramos el 
-              compromiso, la responsabilidad y la pasión por hacer bien las cosas.
-              Creemos en el trabajo en equipo como la clave para lograr grandes resultados.
-              Si deseas formar parte de un equipo que transforma espacios con calidad y creatividad,
-              llena el formulario y da el primer paso hacia nuevas oportunidades laborales.
-              ¡Tu talento y esfuerzo pueden marcar la diferencia!
-            </p>
-          </div>
-
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 px-4 md:px-0">
+      <div className="w-full md:w-1/2 text-center md:text-left" data-aos="fade-up">
+        <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-blue-700">
+          Únete a nuestro equipo
+        </h2>
+        <p className="text-base md:text-lg text-gray-900 leading-relaxed md:leading-loose">
+          En <strong>Construcciones JM SAS</strong>, buscamos personas con ganas de trabajar,
+          aprender y crecer en el sector de la construcción. Valoramos el 
+          compromiso, la responsabilidad y la pasión por hacer bien las cosas.
+          <br className="hidden md:block" />
+          Creemos en el trabajo en equipo como la clave para lograr grandes resultados.
+          <br className="hidden md:block" />
+          Si deseas formar parte de un equipo que transforma espacios con calidad y creatividad,
+          llena el formulario y da el primer paso hacia nuevas oportunidades laborales.
+          <br className="hidden md:block" />
+          <span className="font-medium text-blue-600">¡Tu talento y esfuerzo pueden marcar la diferencia!</span>
+        </p>
+      </div>
+    </div>
           <div className="md:w-1/2 flex justify-center">
             <img 
               src="/images/fotoFamiliar.jpeg" 
@@ -194,18 +199,32 @@ export default function Page() {
                 required
               />
             </div>
-
-            <div>
-              <label className="block text-gray-800 font-medium">Adjunta tu CV (Solo PDF)</label>
-              <input 
-                type="file" 
-                className="w-full py-2.5 px-4 border border-gray-700 bg-white rounded-lg text-sm font-medium text-gray-800 focus:border-gray-600 focus:ring-0 focus:ring-offset-0" 
-                accept=".pdf"
-                onChange={handleFileChange}
-                required 
-              />
-              {fileError && <p className="text-red-600 mt-2">{fileError}</p>}
-            </div>
+              <div>
+    <label className="block text-gray-800 font-medium mb-2">Adjunta tu CV (Solo PDF)</label>
+  
+    <div className="relative w-full">
+      <input 
+        type="file" 
+        id="fileUpload"
+        className="absolute inset-0 opacity-0 cursor-pointer"
+        accept=".pdf"
+        onChange={handleFileChange}
+        required
+      />
+      <label
+        htmlFor="fileUpload"
+        className="inline-block bg-white border border-gray-300 text-gray-800 font-medium py-2.5 px-4 rounded-lg cursor-pointer hover:bg-gray-100 transition duration-200 shadow-sm"
+      >
+        Seleccionar archivo PDF
+      </label>
+      {cvFile && (
+        <p className="mt-2 text-sm text-gray-600">
+          Archivo seleccionado: <span className="font-medium">{cvFile.name}</span>
+        </p>
+      )}
+      {fileError && <p className="text-red-600 mt-2">{fileError}</p>}
+    </div>
+  </div>
 
             <div className="text-center">
               <button 
