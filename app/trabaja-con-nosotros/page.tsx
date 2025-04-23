@@ -193,8 +193,7 @@ export default function Page() {
                 required
               />
             </div>
-
-            <div>
+<div>
   <label className="block text-gray-800 font-medium mb-2">Adjunta tu CV (Solo PDF)</label>
   <div className="relative w-full">
     <input
@@ -207,7 +206,7 @@ export default function Page() {
     />
     <label
       htmlFor="fileUpload"
-      className="flex items-center gap-2 justify-center bg-blue-600 text-white font-semibold py-2 px-4 rounded-md cursor-pointer hover:bg-blue-700 transition duration-200"
+      className="flex items-center gap-2 justify-center bg-white text-gray-800 font-semibold py-2 px-4 rounded-md cursor-pointer hover:bg-gray-100 transition duration-200"
     >
       <UploadCloud className="w-5 h-5" />
       Subir archivo PDF
@@ -220,6 +219,7 @@ export default function Page() {
     {fileError && <p className="text-red-600 mt-2">{fileError}</p>}
   </div>
 </div>
+
 
             <div className="text-center">
               <button
