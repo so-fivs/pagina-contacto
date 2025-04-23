@@ -195,31 +195,31 @@ export default function Page() {
             </div>
 
             <div>
-              <label className="block text-gray-800 font-medium mb-2">Adjunta tu CV (Solo PDF)</label>
-              <div className="relative w-full">
-                <input
-                  type="file"
-                  id="fileUpload"
-                  className="absolute inset-0 opacity-0 cursor-pointer"
-                  accept=".pdf"
-                  onChange={handleFileChange}
-                  required
-                />
-                <label
-                  htmlFor="fileUpload"
-                  className="flex items-center gap-2 justify-center bg-yellow-400 text-black font-semibold py-2 px-4 rounded-md cursor-pointer hover:bg-yellow-500 transition duration-200"
-                >
-                  <UploadCloud className="w-5 h-5" />
-                  Subir archivo PDF
-                </label>
-                {cvFile && (
-                  <p className="mt-2 text-sm text-gray-600">
-                    Archivo seleccionado: <span className="font-medium">{cvFile.name}</span>
-                  </p>
-                )}
-                {fileError && <p className="text-red-600 mt-2">{fileError}</p>}
-              </div>
-            </div>
+  <label className="block text-gray-800 font-medium mb-2">Adjunta tu CV (Solo PDF)</label>
+  <div className="relative w-full">
+    <input
+      type="file"
+      id="fileUpload"
+      className="absolute inset-0 opacity-0 cursor-pointer"
+      accept=".pdf"
+      onChange={handleFileChange}
+      required
+    />
+    <label
+      htmlFor="fileUpload"
+      className="flex items-center gap-2 justify-center bg-blue-600 text-white font-semibold py-2 px-4 rounded-md cursor-pointer hover:bg-blue-700 transition duration-200"
+    >
+      <UploadCloud className="w-5 h-5" />
+      Subir archivo PDF
+    </label>
+    {cvFile && (
+      <p className="mt-2 text-sm text-gray-600">
+        Archivo seleccionado: <span className="font-medium">{cvFile.name}</span>
+      </p>
+    )}
+    {fileError && <p className="text-red-600 mt-2">{fileError}</p>}
+  </div>
+</div>
 
             <div className="text-center">
               <button
