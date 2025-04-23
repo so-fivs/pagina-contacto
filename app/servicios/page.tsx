@@ -41,11 +41,13 @@ export default function Page() {
 
   const nextImage = () => {
     const images = galleryMap[selectedService ?? ""] || [];
+    setIsImageLoaded(false);
     setCurrentImageIndex((prev) => (prev + 1) % images.length);
   };
 
   const prevImage = () => {
     const images = galleryMap[selectedService ?? ""] || [];
+    setIsImageLoaded(false);
     setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
@@ -116,7 +118,10 @@ export default function Page() {
 
       {isOpen && selectedService && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="bg-white p-6 rounded-xl shadow-xl max-w-2xl w-full text-center relative">
+          <div
+            className="bg-white p-6 rounded-xl shadow-xl max-w-2xl w-full text-center relative"
+            data-aos="fade-zoom-in"
+          >
             <button
               onClick={closeGallery}
               className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl"
@@ -125,10 +130,18 @@ export default function Page() {
             </button>
             <h3 className="text-2xl font-bold mb-4 text-blue-700">Galería de {selectedService}</h3>
             <div className="relative">
+              {!isImageLoaded && (
+                <div className="w-full h-96 flex items-center justify-center text-gray-600 font-semibold text-xl animate-pulse">
+                  Cargando imagen...
+                </div>
+              )}
               <img
                 src={galleryMap[selectedService][currentImageIndex]}
                 alt={selectedService}
-                className="w-full h-auto max-h-96 object-contain"
+                className={`w-full h-auto max-h-96 object-contain transition-opacity duration-300 ${
+                  isImageLoaded ? "opacity-100" : "opacity-0"
+                }`}
+                onLoad={() => setIsImageLoaded(true)}
               />
               <button
                 onClick={prevImage}
