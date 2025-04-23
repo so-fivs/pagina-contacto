@@ -1,4 +1,3 @@
-'use client';
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { useState, useEffect } from "react";
@@ -13,7 +12,7 @@ export default function Page() {
   const galleryMap: { [key: string]: string[] } = {
     Remodelaciones: [
       "/images/remodelacionAntes.jpg",
-      "images/remodelacionDespues.jpg",
+      "/images/remodelacionDespues.jpg",
     ],
     Estructuras: [
       "/images/esctructurasAntes.jpeg",
@@ -48,6 +47,10 @@ export default function Page() {
       "/images/diseños.png",
     ],
   };
+
+  useEffect(() => {
+    AOS.init({ duration: 1500 });
+  }, []);
 
   const openGallery = (serviceName: string) => {
     setSelectedService(serviceName);
@@ -125,14 +128,6 @@ export default function Page() {
     },
   ];
 
-  // Inicialización de AOS en el efecto useEffect
-  useEffect(() => {
-    AOS.init({
-      duration: 1000, // Duración de las animaciones
-      once: true,     // Solo una vez, al hacer scroll por primera vez
-    });
-  }, []);
-
   return (
     <div>
       <Navbar />
@@ -148,8 +143,6 @@ export default function Page() {
               key={title}
               onClick={() => openGallery(title)}
               className="cursor-pointer p-5 rounded-2xl bg-blue-50 shadow hover:shadow-md transition active:scale-105"
-              data-aos="zoom-in" // Añadido AOS para animación en este elemento
-              data-aos-duration="1000"
             >
               <div className="mb-3">
                 <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
@@ -167,62 +160,44 @@ export default function Page() {
           <div className="border-t py-1 [border-image:linear-gradient(to_right,transparent,rgba(148,163,184,0.25),transparent)1] mb-6"></div>
           <h2 className="text-3xl font-bold text-center mb-10 text-blue-700 md:text-3xl">Lo que dicen nuestros clientes</h2>
           <div className="space-y-10">
-            {/* Reseña 1 */}
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-            data-aos="zoom-in"
-            data-aos-duration="1000">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center shadow-sm">
-                  <span className="text-gray-700 text-lg">👩‍💼</span>
-                </div>
-                <div>
-                  <p className="text-gray-800 font-semibold">Catherine Mora</p>
-                  <p className="text-gray-500 text-sm">Remodelación de apartamento</p>
-                </div>
-              </div>
-              <p className="text-gray-700 italic text-lg">
-                “Me pareció perfecto su desempeño de trabajo, sus horarios y cumplimiento con los tiempos. Recomiendo la empresa porque entienden lo que el cliente busca”
-              </p>
-            </div>
-
-            {/* Reseña 2 */}
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-            data-aos="zoom-in"
-            data-aos-duration="1000">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center shadow-sm">
-                  <span className="text-gray-700 text-lg">🧑‍💼</span>
-                </div>
-                <div>
-                  <p className="text-gray-800 font-semibold">Edwin Barrera - Gerente Comercial GRAPSECOL.SAS</p>
-                  <p className="text-gray-500 text-sm">Obras completas</p>
-                </div>
-              </div>
-              <p className="text-gray-700 italic text-lg">
-                “Hemos realizado contratos de obra en diferentes oportunidades con la empresa, obteniendo como resultado satisfacción total gracias a la calidad de sus trabajos, al cumplimiento, la estética, la responsabilidad y el profesionalismo en la excelente ejecución de los compromisos adquiridos. ”
-              </p>
-            </div>
-
-            {/* Reseña 3 */}
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-            data-aos="zoom-in"
-            data-aos-duration="1000">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center shadow-sm">
-                  <span className="text-gray-700 text-lg">👨‍💼</span>
-                </div>
-                <div>
-                  <p className="text-gray-800 font-semibold">Carlos Ramírez - CEO Empresa Constructora</p>
-                  <p className="text-gray-500 text-sm">Construcción de viviendas</p>
-                </div>
-              </div>
-              <p className="text-gray-700 italic text-lg">
-                “Excelente experiencia, los trabajos realizados fueron entregados en el tiempo estipulado y con un acabado muy profesional.”
-              </p>
-            </div>
+            {/* Reseñas aquí */}
           </div>
         </section>
       </div>
+
+      {isOpen && selectedService && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="bg-white p-6 rounded-xl shadow-xl max-w-2xl w-full text-center relative">
+            <button
+              onClick={closeGallery}
+              className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-xl"
+            >
+              ✕
+            </button>
+            <h3 className="text-2xl font-bold mb-4 text-blue-700">Galería de {selectedService}</h3>
+            <div className="relative">
+              <img
+                src={galleryMap[selectedService][currentImageIndex]}
+                alt={selectedService}
+                className="w-full h-auto max-h-96 object-contain"
+              />
+              <button
+                onClick={prevImage}
+                className="absolute top-1/2 left-3 transform -translate-y-1/2 text-white bg-black p-2 rounded-full"
+              >
+                &#60;
+              </button>
+              <button
+                onClick={nextImage}
+                className="absolute top-1/2 right-3 transform -translate-y-1/2 text-white bg-black p-2 rounded-full"
+              >
+                &#62;
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <Footer />
     </div>
   );
