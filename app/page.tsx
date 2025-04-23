@@ -1,9 +1,10 @@
-import React from "react";
+"use client";
+import React, { useMemo, useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import Image from "next/image";
-import Spotlight from "@/components/spotlight";
-import { useMemo } from "react";
 import { Hammer, Eye, Handshake } from "lucide-react";
 
 type InfoCardTitle = "Misión" | "Visión" | "Valores";
@@ -24,7 +25,11 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, content }) => {
   );
 
   return (
-    <div className="relative h-full overflow-hidden rounded-xl bg-white p-6 border border-gray-300 shadow-md text-center">
+    <div
+      className="relative h-full overflow-hidden rounded-xl bg-white p-6 border border-gray-300 shadow-md text-center"
+      data-aos="zoom-in"
+      data-aos-duration="1000" // Ajuste de duración de animación
+    >
       <div className="flex justify-center mb-4">{iconMap[title]}</div>
       <h3 className="text-2xl font-bold text-gray-900 mb-4">{title}</h3>
       <p className="text-gray-900 text-sm md:text-base">{content}</p>
@@ -33,6 +38,13 @@ const InfoCard: React.FC<InfoCardProps> = ({ title, content }) => {
 };
 
 export default function Page() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Duración de las animaciones
+      once: true,     // Solo una vez, al hacer scroll por primera vez
+    });
+  }, []);
+
   const teamMembers = [
     {
       image: "/images/gerente.jpg",
@@ -82,7 +94,11 @@ export default function Page() {
           fill
           className="object-cover brightness-30"
         />
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pt-20 md:pt-24">
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pt-20 md:pt-24"
+          data-aos="fade-right"
+          data-aos-duration="1500"
+        >
           <h1 className="text-white text-3xl md:text-5xl font-bold max-w-3xl">
             "Expertos en construir, remodelar y transformar tus espacios con calidad y confianza"
           </h1>
@@ -109,43 +125,57 @@ export default function Page() {
               <span className="flex-1 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent"></span>
             </div>
 
-            <h2 className="text-3xl font-bold text-blue-700 md:text-4xl pb-4">
+            <h2 className="text-3xl font-bold text-blue-700 md:text-4xl">
               Quiénes somos
             </h2>
 
-            <p className="text-gray-900 text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
-              Somos una empresa constructora de Bogotá con más de 10 años de trayectoria.
+            <p className="text-lg text-gray-900 leading-relaxed">
+              Somos una empresa constructora de Bogotá con más de 10 años de trayectoria. 
               Dedicada a la ejecución de obras integrales en construcción, remodelación y
-              mantenimiento con mano de obra propia. Destacada por brindar asesoramiento y
-              soluciones constructivas a sus clientes, buscando siempre ajustarse a las
-              necesidades del mismo y garantizando siempre calidad, cumplimiento y excelencia.
-              Nuestra experiencia y compromiso nos han convertido en un aliado confiable para
-              transformar y mejorar todo tipo de espacios.
+              mantenimiento con mano de obra propia. 
+              Destacada por brindar asesoramiento y soluciones constructivas a sus clientes, 
+              buscando siempre ajustarse a las necesidades del mismo y garantizando 
+              siempre calidad, cumplimiento y excelencia. Nuestra experiencia y compromiso nos han 
+              convertido en un aliado confiable para transformar y mejorar todo tipo de espacios.
             </p>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <InfoCard
-              title="Misión"
-              content="Construir estructuras de alta calidad que satisfagan las necesidades de nuestros clientes con responsabilidad, honestidad y cumplimiento..."
-            />
-            <InfoCard
-              title="Visión"
-              content="Posicionarnos como una empresa integral y referente en el sector de la construcción, destacándonos por la excelencia..."
-            />
-            <InfoCard
-              title="Valores"
-              content="Actuamos con ética y profesionalismo, mantenemos una relación de confianza con nuestros clientes, impulsamos la innovación..."
-            />
           </div>
         </div>
       </section>
+
+      {/* Línea de separación */}
+      <div
+        className="flex items-center justify-center gap-4 pb-8 relative"
+        data-aos="zoom-in"
+        data-aos-duration="1500"
+      >
+        <span className="h-0.5 w-1/2 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></span>
+      </div>
+
+      <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <InfoCard
+          title="Misión"
+          content="Construir estructuras de alta calidad que satisfagan las necesidades de nuestros clientes con responsabilidad, honestidad y cumplimiento..."
+        />
+        <InfoCard
+          title="Visión"
+          content="Posicionarnos como una empresa integral y referente en el sector de la construcción, destacándonos por la excelencia..."
+        />
+        <InfoCard
+          title="Valores"
+          content="Actuamos con ética y profesionalismo, mantenemos una relación de confianza con nuestros clientes, impulsamos la innovación..."
+        />
+      </div>
 
       <div className="flex items-center justify-center gap-4 my-12">
         <span className="h-0.5 w-1/2 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></span>
       </div>
 
-      <section className="py-16 px-4 flex justify-center">
+      {/* Nuestro equipo */}
+      <section
+        className="py-16 px-4 flex justify-center"
+        data-aos="zoom-in"
+        data-aos-duration="1500"
+      >
         <div className="max-w-5xl w-full">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-blue-700 md:text-4xl">
@@ -160,9 +190,10 @@ export default function Page() {
             {teamMembers.map((member, index) => (
               <div
                 key={member.name}
+                data-aos="fade-up"
                 className={`flex flex-col md:flex-row ${
                   index % 2 !== 0 ? "md:flex-row-reverse" : ""
-                } items-center gap-6 p-6 rounded-xl shadow-lg bg-white transform transition duration-300 hover:scale-105`}
+                } items-center gap-6 p-6 rounded-xl shadow-lg bg-white transform transition duration-500 hover:scale-105`}
               >
                 <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-4 border-blue-700 shadow-md flex-shrink-0 relative">
                   <Image
@@ -170,13 +201,15 @@ export default function Page() {
                     alt={member.name}
                     width={144}
                     height={144}
-                    className="w-full h-full object-cover"
+                    className="object-cover w-full h-full"
                   />
                 </div>
                 <div className="text-center md:text-left">
-                  <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
-                  <p className="text-lg text-gray-900 font-medium">{member.role}</p>
-                  <p className="text-base text-gray-900 mt-1">{member.description}</p>
+                  <h3 className="text-2xl font-semibold text-blue-700">
+                    {member.name}
+                  </h3>
+                  <p className="text-lg text-gray-900">{member.role}</p>
+                  <p className="text-sm text-gray-600 mt-2">{member.description}</p>
                 </div>
               </div>
             ))}
@@ -188,4 +221,5 @@ export default function Page() {
     </div>
   );
 }
+
 
