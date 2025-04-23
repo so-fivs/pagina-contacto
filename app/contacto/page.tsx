@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -148,7 +146,7 @@ export default function ContactPage() {
             </div>
 
             {/* Sección de mensaje (Derecha) */}
-            <div className="md:w-1/2" data-aos="fade-left">
+            <div className="md:w-1/2 mt-8 md:mt-0" data-aos="fade-left">
               <h2 className="text-3xl font-semibold mb-4 text-blue-700">Asesoría y Cotización Personalizada</h2>
               <p className="text-lg text-gray-900">
                 En <strong>Construcciones JM SAS</strong>, nos especializamos en el desarrollo y ejecución de proyectos
@@ -171,4 +169,5 @@ export default function ContactPage() {
     </>
   );
 }
+
 
