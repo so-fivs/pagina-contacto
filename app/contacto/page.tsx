@@ -1,9 +1,10 @@
-"use client"; 
-import { useState, useEffect } from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import AOS from "aos";
-import "aos/dist/aos.css"; // Importa el archivo de estilos de AOS
+import "aos/dist/aos.css";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -17,7 +18,7 @@ export default function ContactPage() {
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
 
   useEffect(() => {
-    AOS.init({ duration: 1000, once: true }); // Inicializa AOS con animación de 1000ms y asegura que la animación ocurra una vez
+    AOS.init({ duration: 1000, once: true });
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -58,8 +59,6 @@ export default function ContactPage() {
       setIsSubmitting(false);
     }
   };
-
-  console.log("Renderizando página de contacto");
 
   return (
     <>
@@ -146,25 +145,25 @@ export default function ContactPage() {
               </form>
             </div>
 
-        <div className="md:w-1/2 mt-8 md:mt-0" data-aos="fade-left">
-        <h2 className="text-3xl font-semibold mb-4 text-blue-700 text-center md:text-left">
-          Asesoría y Cotización Personalizada
-        </h2>
-        <p className="text-sm leading-relaxed text-center px-4 text-gray-900 
-                      md:text-base md:leading-loose md:text-left md:px-0">
-          En <strong>Construcciones JM SAS</strong>, nos especializamos en el desarrollo y ejecución de proyectos
-          residenciales, comerciales e industriales, garantizando altos estándares de calidad, eficiencia y cumplimiento.
-          <br /><br />
-          Si requieres asesoramiento profesional o una cotización detallada para tu proyecto, te invitamos a completar
-          el siguiente formulario. Nuestro equipo revisará la solicitud y se pondrá en contacto a la mayor brevedad.
-          <br /><br />
-          <span className="italic text-black-600">Construyamos juntos el futuro.</span>
-        </p>
-      </div>
+            <div className="md:w-1/2 mt-8 md:mt-0" data-aos="fade-left">
+              <h2 className="text-3xl font-semibold mb-4 text-blue-700 text-center md:text-left">
+                Asesoría y Cotización Personalizada
+              </h2>
+              <p className="text-sm leading-relaxed text-center px-4 text-gray-900 
+                            md:text-base md:leading-loose md:text-left md:px-0">
+                En <strong>Construcciones JM SAS</strong>, nos especializamos en el desarrollo y ejecución de proyectos
+                residenciales, comerciales e industriales, garantizando altos estándares de calidad, eficiencia y cumplimiento.
+                <br /><br />
+                Si requieres asesoramiento profesional o una cotización detallada para tu proyecto, te invitamos a completar
+                el siguiente formulario. Nuestro equipo revisará la solicitud y se pondrá en contacto a la mayor brevedad.
+                <br /><br />
+                <span className="italic text-black-600">Construyamos juntos el futuro.</span>
+              </p>
+            </div>
+          </div>
+        </div>
 
-        {/* Espacio pequeño antes del Footer */}
         <div className="mt-10"></div>
-
         <Footer />
       </div>
     </>
