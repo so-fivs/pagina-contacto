@@ -127,7 +127,7 @@ export default function Page() {
               <img
                 src={galleryMap[selectedService][currentImageIndex]}
                 alt={selectedService}
-                className="w-full h-auto max-h-96 object-contain transition-transform duration-300"
+                className="w-full h-auto max-h-96 object-contain transition-none"
               />
               {galleryMap[selectedService].length > 1 && (
                 <>
