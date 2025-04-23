@@ -1,3 +1,5 @@
+"use client";
+
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { useState, useEffect } from "react";
@@ -202,4 +204,5 @@ export default function Page() {
     </div>
   );
 }
+
 
