@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import AOS from "aos";
+import "aos/dist/aos.css"; // Importa el archivo de estilos de AOS
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -14,6 +16,10 @@ export default function ContactPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
+
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true }); // Inicializa AOS con animación de 1000ms y asegura que la animación ocurra una vez
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -61,13 +67,13 @@ export default function ContactPage() {
       <div>
         <Navbar />
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <main className="pt-28 p-6 text-center mt-6">
+          <main className="pt-28 p-6 text-center mt-6" data-aos="fade-up">
             <h1 className="text-4xl sm:text-4xl font-bold mb-6 text-blue-700">Contáctanos</h1>
             <p className="mb-10 text-2xl text-black-700">¿Interesado en nuestros servicios?</p>
           </main>
 
           <div className="flex flex-col md:flex-row items-start justify-between gap-12">
-            <div className="md:w-1/2 bg-white p-8 rounded-lg shadow-lg border border-gray-200">
+            <div className="md:w-1/2 bg-white p-8 rounded-lg shadow-lg border border-gray-200" data-aos="zoom-in">
               <h2 className="text-2xl font-semibold mb-6 text-center text-gray-900">Déjanos tu mensaje</h2>
 
               {submitStatus === 'success' && (
@@ -107,7 +113,6 @@ export default function ContactPage() {
                       required />
                   </div>
                 </div>
-
                 <div>
                   <label className="block text-gray-800 font-medium">Teléfono</label>
                   <input
@@ -131,7 +136,6 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required />
                 </div>
-
                 <div className="text-center">
                   <button
                     type="submit"
@@ -144,7 +148,7 @@ export default function ContactPage() {
             </div>
 
             {/* Sección de mensaje (Derecha) */}
-            <div className="md:w-1/2">
+            <div className="md:w-1/2" data-aos="fade-left">
               <h2 className="text-3xl font-semibold mb-4 text-blue-700">Asesoría y Cotización Personalizada</h2>
               <p className="text-lg text-gray-900">
                 En <strong>Construcciones JM SAS</strong>, nos especializamos en el desarrollo y ejecución de proyectos
@@ -158,8 +162,13 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
+
+        {/* Espacio pequeño antes del Footer */}
+        <div className="mt-10"></div>
+
         <Footer />
       </div>
     </>
   );
 }
+
