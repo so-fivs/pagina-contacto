@@ -10,7 +10,6 @@ export default function Page() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedService, setSelectedService] = useState<string | null>(null);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const galleryMap: { [key: string]: string[] } = {
     Remodelaciones: ["/images/remodelacionAntes.jpg", "/images/remodelacionDespues.jpg"],
@@ -33,27 +32,21 @@ export default function Page() {
   const openGallery = (serviceName: string) => {
     setSelectedService(serviceName);
     setCurrentImageIndex(0);
-    setIsImageLoaded(false);
     setIsOpen(true);
   };
 
   const closeGallery = () => setIsOpen(false);
 
   const nextImage = () => {
-    if (!selectedService) return;
-    const images = galleryMap[selectedService];
+    const images = galleryMap[selectedService ?? ""] || [];
     if (currentImageIndex < images.length - 1) {
-      setIsImageLoaded(false);
-      setCurrentImageIndex((prev) => prev + 1);
+      setCurrentImageIndex(currentImageIndex + 1);
     }
   };
 
   const prevImage = () => {
-    if (!selectedService) return;
-    const images = galleryMap[selectedService];
     if (currentImageIndex > 0) {
-      setIsImageLoaded(false);
-      setCurrentImageIndex((prev) => prev - 1);
+      setCurrentImageIndex(currentImageIndex - 1);
     }
   };
 
@@ -99,7 +92,7 @@ export default function Page() {
         </div>
 
         {/* Sección de Reseñas */}
-        <section className="mt-16 mb-16" data-aos="zoom-in" data-aos-duration="1500">
+        <section className="mt-16 mb-16" data-aos="zoom-in">
           <div className="border-t py-1 [border-image:linear-gradient(to_right,transparent,rgba(148,163,184,0.25),transparent)1] mb-6"></div>
           <h2 className="text-3xl font-bold text-center mb-10 text-blue-700">Lo que dicen nuestros clientes</h2>
           <div className="space-y-10">
@@ -122,6 +115,7 @@ export default function Page() {
         </section>
       </div>
 
+      {/* Galería Modal */}
       {isOpen && selectedService && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <div className="bg-white p-6 rounded-xl shadow-xl max-w-2xl w-full text-center relative" data-aos="fade-zoom-in">
@@ -130,34 +124,30 @@ export default function Page() {
             </button>
             <h3 className="text-2xl font-bold mb-4 text-blue-700">Galería de {selectedService}</h3>
             <div className="relative">
-              {!isImageLoaded && (
-                <div className="w-full h-96 flex items-center justify-center text-gray-600 font-semibold text-xl animate-pulse">
-                  Cargando imagen...
-                </div>
-              )}
               <img
                 src={galleryMap[selectedService][currentImageIndex]}
                 alt={selectedService}
-                className={`w-full h-auto max-h-96 object-contain transition-opacity duration-300 ${
-                  isImageLoaded ? "opacity-100" : "opacity-0"
-                }`}
-                onLoad={() => setIsImageLoaded(true)}
+                className="w-full h-auto max-h-96 object-contain transition-transform duration-300"
               />
-              {galleryMap[selectedService].length > 1 && currentImageIndex > 0 && (
-                <button
-                  onClick={prevImage}
-                  className="absolute top-1/2 left-3 transform -translate-y-1/2 text-white bg-black p-2 rounded-full"
-                >
-                  &#60;
-                </button>
-              )}
-              {galleryMap[selectedService].length > 1 && currentImageIndex < galleryMap[selectedService].length - 1 && (
-                <button
-                  onClick={nextImage}
-                  className="absolute top-1/2 right-3 transform -translate-y-1/2 text-white bg-black p-2 rounded-full"
-                >
-                  &#62;
-                </button>
+              {galleryMap[selectedService].length > 1 && (
+                <>
+                  {currentImageIndex > 0 && (
+                    <button
+                      onClick={prevImage}
+                      className="absolute top-1/2 left-3 transform -translate-y-1/2 text-black text-3xl"
+                    >
+                      ‹
+                    </button>
+                  )}
+                  {currentImageIndex < galleryMap[selectedService].length - 1 && (
+                    <button
+                      onClick={nextImage}
+                      className="absolute top-1/2 right-3 transform -translate-y-1/2 text-black text-3xl"
+                    >
+                      ›
+                    </button>
+                  )}
+                </>
               )}
             </div>
           </div>
@@ -168,4 +158,3 @@ export default function Page() {
     </div>
   );
 }
-
