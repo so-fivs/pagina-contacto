@@ -199,7 +199,7 @@ export default function Page() {
               <label className="block text-gray-800 font-medium">Adjunta tu CV (Solo PDF)</label>
               <input 
                 type="file" 
-                className="w-full p-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-400 focus:outline-none" 
+                className="w-full py-2.5 px-4 border border-gray-700 bg-white rounded-lg text-sm font-medium text-gray-800 focus:border-gray-600 focus:ring-0 focus:ring-offset-0" 
                 accept=".pdf"
                 onChange={handleFileChange}
                 required 
@@ -226,3 +226,4 @@ export default function Page() {
     </div>
   );
 }
+
