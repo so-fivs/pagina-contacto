@@ -22,29 +22,35 @@ export default function Page() {
       "/images/tuberías.jpg",
     ],
     Impermeabilizaciones: [
-      "/images/impermeabilizacion.jpg",
+      "/images/impermeabilizacion1.jpg",
+      "/images/impermeabilizacion2.jpg",
     ],
     Enchapes: [
       "/images/enchapesDespues.jpg",
     ],
     Drywall: [
-      "/images/drywallAntes.jpg",
+      "/images/drywall1.jpg",
+      "/images/drywall2.jpg",
     ],
     Pintura: [
-      "/images/pinturas.webp",
+      "/images/pintura1.jpg",
+      "/images/pintura2.jpg",
     ],
     Fachadas: [
-      "/images/Fachada.jpg",
+      "/images/fachada1.jpg",
+      "/images/fachada2.jpg",
     ],
     Locativos: [
-      "/images/locativosAntes.jpg",
-      "/images/locativosDespues.jpg",
+      "/images/locativo1.jpg",
+      "/images/locativo2.jpg",
     ],
     Terminaciones: [
-      "/images/terminaciones.jpg",
+      "/images/terminacion1.jpg",
+      "/images/terminacion2.jpg",
     ],
     Diseños: [
-      "/images/diseños.png",
+      "/images/diseno1.jpg",
+      "/images/diseno2.jpg",
     ],
   };
 
@@ -127,8 +133,7 @@ export default function Page() {
   return (
     <div>
       <Navbar />
-      <div className="mx-auto max-w-6xl px-4 sm:px-6"
-      data-aos="fade-up">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <main className="pt-28 p-6 text-center mt-6">
           <h1 className="text-4xl sm:text-4xl font-bold mb-6 text-blue-700">Servicios</h1>
           <p className="mb-10 text-2xl text-black-700">Descubre nuestros servicios de construcción.</p>
@@ -154,20 +159,15 @@ export default function Page() {
         </div>
 
         {/* Sección de Reseñas */}
-        <section className="mt-16 mb-16"
-        data-aos="zoom-in"
-        data-aos-duration="1500">
+        <section className="mt-16 mb-16">
         <div className="border-t py-1 [border-image:linear-gradient(to_right,transparent,rgba(148,163,184,0.25),transparent)1] mb-6"></div>
-          <h2 className="text-3xl font-bold text-center mb-10 text-blue-700 md:text-3xl">Lo que dicen nuestros clientes</h2>
+          <h2 className="text-3xl font-bold text-center mb-10 text-blue-700">Lo que dicen nuestros clientes</h2>
           <div className="space-y-10">
             {/* Reseña 1 */}
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-            data-aos="zoom-in"
-            data-aos-duration="1000"
-            data-aos-delay="0">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center shadow-sm">
-                  <span className="text-gray-700 text-lg">👩‍💼</span>
+                  <span className="text-gray-700 text-lg">👤</span>
                 </div>
                 <div>
                   <p className="text-gray-800 font-semibold">Catherine Mora</p>
@@ -180,13 +180,10 @@ export default function Page() {
             </div>
 
             {/* Reseña 2 */}
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-            data-aos="zoom-in"
-            data-aos-duration="1000"
-            data-aos-delay="0">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center shadow-sm">
-                  <span className="text-gray-700 text-lg">🧑‍💼</span>
+                  <span className="text-gray-700 text-lg">👤</span>
                 </div>
                 <div>
                   <p className="text-gray-800 font-semibold">Edwin Barrera - Gerente Comercial GRAPSECOL.SAS</p>
@@ -199,13 +196,10 @@ export default function Page() {
             </div>
 
             {/* Reseña 3 */}
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-            data-aos="zoom-in"
-            data-aos-duration="1000"
-            data-aos-delay="0">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center shadow-sm">
-                  <span className="text-gray-700 text-lg">🧑‍🔧</span>
+                  <span className="text-gray-700 text-lg">👤</span>
                 </div>
                 <div>
                   <p className="text-gray-800 font-semibold">Cesar Otálora - Representante Legal PROMO POP SAS</p>

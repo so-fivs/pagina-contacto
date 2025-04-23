@@ -107,6 +107,7 @@ export default function ContactPage() {
                       required />
                   </div>
                 </div>
+
                 <div>
                   <label className="block text-gray-800 font-medium">Teléfono</label>
                   <input
@@ -130,6 +131,7 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required />
                 </div>
+
                 <div className="text-center">
                   <button
                     type="submit"

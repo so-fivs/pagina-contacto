@@ -1,4 +1,3 @@
-
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 export default function Footer() {
@@ -49,7 +48,6 @@ export default function Footer() {
             </a>
             <a href="https://www.instagram.com/jm_construcciones_sas/" target="_blank" rel="noopener noreferrer">
               <FaInstagram className="hover:text-pink-600 text-2xl" />
-
             </a>
             <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
               <FaLinkedin className="hover:text-blue-700 text-2xl" />
