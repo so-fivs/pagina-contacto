@@ -167,12 +167,9 @@ export default function Page() {
   />
 </div>
       </section>
-
-{/* Línea decorativa superior */}
-<div className="flex items-center justify-center gap-4">
-  <span className="h-0.5 w-1/2 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></span>
-</div>
-
+      <div className="flex items-center justify-center gap-4 my-12">
+        <span className="h-0.5 w-1/2 bg-gradient-to-r from-transparent via-blue-400 to-transparent"></span>
+      </div>
 {/* Nuestro equipo */}
 <section
   className="py-16 px-4 flex justify-center"
