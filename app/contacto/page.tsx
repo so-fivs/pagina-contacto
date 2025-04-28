@@ -70,7 +70,7 @@ export default function ContactPage() {
             <p className="mb-10 text-2xl text-black-700">¿Interesado en nuestros servicios?</p>
           </main>
 
-          <div className="flex flex-col md:flex-row items-start justify-between gap-12">
+          <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
             <div className="md:w-1/2 bg-white p-8 rounded-lg shadow-lg border border-gray-200" data-aos="zoom-in">
               <h2 className="text-2xl font-semibold mb-6 text-center text-gray-900">Déjanos tu mensaje</h2>
 
